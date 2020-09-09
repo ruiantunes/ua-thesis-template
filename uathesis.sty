@@ -1,0 +1,548 @@
+% 
+% Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
+% Copyright 2018, 2019, 2020 Rui Antunes
+%
+% LaTeX template for theses at University of Aveiro by Rui Antunes.
+% https://github.com/ruiantunes/ua-thesis-template
+% 
+% This code is based on the original LaTeX template created by
+% professor Tomás Oliveira e Silva.
+% http://sweet.ua.pt/tos/TeX.html
+%
+
+%
+% Rui Antunes made the following modifications:
+%
+% - Choosing font sizes 10pt, 11pt, or 12pt uses a better value for the
+%   first vertical space added in the \HEADER macro. Using a fixed 5mm
+%   produced a small undesirable vertical space in the first pages that
+%   use the \HEADER macro. I adjusted manully these values.
+%   https://tex.stackexchange.com/questions/154602/what-measure-in-the-text-is-it-that-is-the-font-size
+%
+% - "DOCUMENTO PROVISÓRIO" changed to "DRAFT DOCUMENT". Its position and
+%   font color was also altered.
+%
+% - Package was renamed from "uaThesis" to "uathesis".
+%
+% - Logo figures were renamed following the kebab-case (lowercase words
+%   separated by hyphens).
+%
+% - Code formatting of this file:
+%   - Maximum column width set to 72 characters.
+%   - Two spaces are used for indentation.
+%   - Comments start with uppercase letter.
+%
+% - The "MAP" option is allowed for MAP joint doctoral programmes. The
+%   logos of the University of Minho and the University of Porto are
+%   placed.
+%
+% - The scientific area is now an option specifying the color bar.
+%   Choose from "accounting", "arts", "economy", "education",
+%   "engineering", "health", "humanities", and "sciences".
+%
+% - RGB color values were updated.
+%
+% - List of departments was extended. Choose from "DAO", "DBIO", "DCM",
+%   "DCSPT", "DECA", "DECIVIL", "DEGEIT", "DEM", "DEMAC", "DEP", "DETI",
+%   "DFIS", "DGEO", "DLC", "DMAT", and "DQ".
+%
+% - The "final" option was changed to "draft" (symmetric behaviour). The
+%   "draft" option puts a message warning this is a provisory document.
+%
+% - The comma at the end of the department names was removed.
+%
+% - By default the new UA logo is used.
+%
+% - Logos are placed in the "./fig/logos/" directory.
+%
+% References:
+%
+% - The norms/models of the UA theses:
+%   - https://www.ua.pt/en/sga/page/12810
+%   - https://www.ua.pt/en/sga/page/4630
+%
+% - List of UA departments:
+%   - https://www.ua.pt/en/departamentos-escolas
+%
+% - MAP joint doctoral programmes:
+%   - http://www.map.edu.pt
+%
+% - Pantone colors:
+%   - https://www.pantone.com/color-finder#/pick
+%
+
+\ProvidesPackage{uathesis}[2020 v0.7.x UA thesis]
+%\ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{a4wide}
+
+%
+% University logo.
+%
+\DeclareOption{oldLogo}{\def\ua@logo{fig/logos/aveiro-old.pdf}}
+\DeclareOption{newLogo}{\def\ua@logo{fig/logos/aveiro-border.pdf}}
+
+%
+% MAP joint doctoral programme.
+%
+\newif\ifua@MAP@\ua@MAP@false
+\DeclareOption{MAP}{%
+  \def\ua@logo{fig/logos/aveiro.pdf}%
+  \def\um@logo{fig/logos/minho.pdf}%
+  \def\up@logo{fig/logos/porto.pdf}%
+  \ua@MAP@true%
+}
+
+%
+% Use "DRAFT DOCUMENT" (draft) in the cover page.
+%
+\newif\ifua@draft@\ua@draft@false
+\DeclareOption{draft}{\ua@draft@true}
+
+%
+% List of departments.
+%
+\DeclareOption{DAO}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Ambiente e Ordenamento}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DBIO}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Biologia}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DCM}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Ci\^encias M\'edicas}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DCSPT}{%
+  \def\ua@textA{Departamento de}%
+  \def\ua@textB{Ci\^encias Sociais, Pol\'iticas e do Territ\'orio}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DECA}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Comunica\c c\~ao e Arte}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DECIVIL}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Engenharia Civil}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DEGEIT}{%
+  \def\ua@textA{Departamento de}%
+  \def\ua@textB{Economia, Gest\~ao, Engenharia Industrial e Turismo}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DEM}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Engenharia Mec\^anica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DEMAC}{%
+  \def\ua@textA{Departamento de }%
+  \def\ua@textB{Engenharia de Materiais e Cer\^amica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DEP}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Educa\c c\~ao e Psicologia}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DETI}{%
+  \def\ua@textA{Departamento de}%
+  \def\ua@textB{Eletr\'onica, Telecomunica\c c\~oes e Inform\'atica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DFIS}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de F\'\i sica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DGEO}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Geoci\^encias}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DLC}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de L\'inguas e Culturas}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DMAT}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Matem\'atica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+\DeclareOption{DQ}{%
+  \def\ua@textA{}%
+  \def\ua@textB{Departamento de Qu\'imica}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
+
+%
+% Color of the cover page top bar.
+%
+
+% Color pantone 115.
+\def\ua@pantone@yellow{%
+  \def\ua@red{253}\def\ua@green{218}\def\ua@blue{36}}
+
+% Color pantone 264.
+\def\ua@pantone@lilac{%
+  \def\ua@red{193}\def\ua@green{167}\def\ua@blue{226}}
+
+% Color pantone 301.
+\def\ua@pantone@darkblue{%
+  \def\ua@red{0}\def\ua@green{75}\def\ua@blue{135}}
+
+% Color pantone 484.
+\def\ua@pantone@brick{%
+  \def\ua@red{154}\def\ua@green{51}\def\ua@blue{36}}
+
+% Color pantone 1505.
+\def\ua@pantone@orange{%
+  \def\ua@red{255}\def\ua@green{105}\def\ua@blue{0}}
+
+% Color pantone 1787.
+\def\ua@pantone@red{%
+  \def\ua@red{244}\def\ua@green{54}\def\ua@blue{76}}
+
+% Color pantone 3105.
+\def\ua@pantone@lightblue{%
+  \def\ua@red{104}\def\ua@green{210}\def\ua@blue{223}}
+
+\def\ua@white{255}
+
+%
+% Colored bars.
+%
+\DeclareOption{accounting}{%
+  \ua@pantone@darkblue%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \ua@pantone@red%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \ua@pantone@darkblue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{arts}{%
+  \ua@pantone@lilac%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{economy}{%
+  \ua@pantone@red%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@white\let\ua@greenM=\ua@white\let\ua@blueM=\ua@white%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{education}{%
+  \ua@pantone@orange%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{engineering}{%
+  \ua@pantone@brick%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{health}{%
+  \ua@pantone@yellow%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{humanities}{%
+  \ua@pantone@darkblue%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+\DeclareOption{sciences}{%
+  \ua@pantone@lightblue%
+  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
+  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+}
+
+%
+% Default options.
+%
+\ExecuteOptions{DETI}
+\ExecuteOptions{engineering}
+\ExecuteOptions{newLogo}
+\ProcessOptions
+
+%
+% Used to place a tri-colored colored bar in the title page. The \BAR
+% macro must be placed inside the first argument of the \HEADER macro.
+%
+\def\BAR{%
+  % top bar
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redT,\ua@greenT,\ua@blueT}%
+    {\vrule width 133mm height 12.000mm depth -10.666mm}}}%
+  % middle bar
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redM,\ua@greenM,\ua@blueM}%
+    {\vrule width 133mm height 10.667mm depth -9.333mm}}}%
+  % bottom bar
+  \smash{\rlap{\textcolor[RGB]{\ua@redB,\ua@greenB,\ua@blueB}%
+  {\vrule width 133mm height 9.334mm depth -8.000mm}}}}%
+
+%
+% Used to include a figure in the title page. The \FIG macro must be
+% placed inside the first argument of the \HEADER macro. The text of the
+% macro is typeset in the space reversed for a figure, citation, or
+% whatever, and must have an height plus depth that does not exceed
+% 60mm.
+%
+\long\def\FIG#1{\smash{\rlap{\setbox0=\hbox{#1}\dimen0=137mm%
+  \advance\dimen0 by\ht0\lower\dimen0\box0}}}
+
+%
+% Fixed font sizes.
+%
+\def\ua@font@size#1{\ifcase#1
+      % 11pt \normalsize
+    \fontsize{\@xipt}{13.6}\selectfont
+  \or % 11pt \Large
+    \fontsize{\@xivpt}{18}\selectfont
+  \or % 11pt \Huge
+    \fontsize{\@xxvpt}{30}\selectfont
+  \fi}
+
+%
+% Used to put the University logo on the top of a page. Should be the
+% first macro inside a \TitlePage environment. Its first argument can be
+% a \BAR macro call and/or a \FIG macro call; anything else that does
+% not change the horizontal and vertical positions can also be used. Its
+% second argument is the year of the thesis.
+%
+\def\ua@above#1#2{%
+  \rlap{\smash{\raise 10pt\hbox{\ua@font@size0\textsf{#1}}}}%
+  \hbox{\ua@font@size0\textsf{#2}}}
+\def\ua@below#1#2{%
+  \rlap{\smash{\lower 10pt\hbox{\ua@font@size0\textsf{#2}}}}%
+  \hbox{\ua@font@size0\textsf{#1}}}
+\long\def\HEADER#1#2{%
+  % Original value was 5mm (default font size was 11pt).
+  %\vspace*{5mm}%
+  \ifdim\f@size pt=10pt
+    % Correct value for 10pt.
+    \vspace*{5.35mm}%
+  \else
+    \ifdim\f@size pt=10.95pt
+      % Correct value for 11pt.
+      \vspace*{5mm}%
+    \else
+      % Correct value for 12pt.
+      \vspace*{4.65mm}%
+    \fi
+  \fi
+  \noindent\ua@font@size0%
+  \rlap{\parbox{\textwidth}{%
+    \ua@font@size0\hspace*{77mm}#1%
+    \textsf{\textbf{Universidade de Aveiro}}%
+    \space\space\ua@above{\ua@textA}{\ua@textB}%
+    \iffalse
+      \hrule width \textwidth height .3pt depth 0mm\relax%
+    \else
+      % pdflatex apparently draws the logo before the hrule (why?), so
+      % we need to split the hrule in two.
+      \ifua@MAP@
+        \hrule width 30mm height 0.3pt depth 0mm\relax%
+      \else
+        \hrule width 66mm height 0.3pt depth 0mm\relax%
+      \fi
+      \vskip -0.3pt%
+      \nointerlineskip\moveright 75.2mm%
+      \vbox{\hrule width 134.8mm height 0.3pt depth 0mm}%
+      \nointerlineskip%
+    \fi
+    \ua@font@size0\hspace*{77mm}%
+    \rlap{\ua@font@size0\textsf{\textbf{\strut #2}}}%
+    \hphantom{\ua@font@size0\textsf{\textbf{Universidade de Aveiro}}}%
+    \space\space\ua@below{\ua@textC}{\ua@textD}}%
+  }\par%
+  \ifua@MAP@
+    \ua@font@size0\vspace*{-8.8mm}\noindent\hspace*{32mm}%
+    \includegraphics[height=5mm]{\ua@logo}\hspace*{2mm}%
+    \includegraphics[height=5mm]{\um@logo}\hspace*{2mm}%
+    \includegraphics[height=5mm]{\up@logo}%
+  \else
+    \ua@font@size0\vspace*{-8.8mm}\noindent\hspace*{67mm}%
+    \includegraphics[height=9mm]{\ua@logo}%
+  \fi
+    \ifua@draft@
+      \smash{%
+        \rlap{%
+          \kern -10mm%
+          \lower 30mm%
+          \hbox{%
+            \color{red}%
+            \Huge\textsf{\textbf{DRAFT DOCUMENT}}%
+          }%
+        }%
+      }%
+      %\smash{%
+      %  \rlap{%
+      %    %\kern 10mm\lower 110mm%
+      %    %\kern 10mm\lower 140mm%
+      %    %\kern 10mm\lower 160mm%
+      %    \kern 10mm\lower 200mm%
+      %    \hbox{\Huge\textsf{\textbf{DRAFT}}}%
+      %  }%
+      %}%
+      %\smash{%
+      %  \rlap{%
+      %    %\kern 20mm\lower 122mm%
+      %    %\kern 20mm\lower 152mm%
+      %    %\kern 20mm\lower 172mm%
+      %    \kern 20mm\lower 212mm%
+      %    \hbox{\Huge\textsf{\textbf{DOCUMENT}}}%
+      %  }%
+      %}%
+    \else\fi
+  \par\vspace*{40mm}}
+
+%
+% Used to put the thesis title in the page. Must be placed immediately
+% after the \HEADER macro. The first argument is the author's name and
+% the second argument is the thesis title.
+%
+\long\def\TITLE#1#2{%
+  \noindent\hspace*{15mm}%
+  \parbox[t]{52mm}{%
+    \raggedright%
+    \ua@font@size1\textsf{\textbf{#1}}%
+  }%
+  \hspace*{10mm}%
+  \parbox[t]{120mm}{%
+    \raggedright%
+    \ua@font@size1\textsf{\textbf{#2}}%
+  }%
+  \par%
+}
+
+%
+% Used to put text in the page. The first argument is the left hand side
+% text (may be empty) and the second argument is the right hand side
+% text. Use either one \TEXT macro call per paragraph or put all
+% paragraphs in one \TEXT macro call.
+%
+\long\def\TEXT#1#2{%
+  \noindent\hspace*{15mm}%
+  \parbox[t]{52mm}{%
+    \raggedright\sloppy
+    \textsf{#1}%
+  }%
+  \hspace*{10mm}%
+  \parbox[t]{120mm}{%
+    \textsf{#2}%
+  }%
+  \par\medskip%
+}
+
+%
+% The environment used to build a special page.
+%
+\def\TitlePage{\newpage\begingroup
+  \hoffset=-1in%
+  \voffset=-1in%
+  \oddsidemargin=0mm%
+  \evensidemargin=0mm%
+  \topmargin=0mm%
+  \headheight=0mm%
+  \headsep=0mm%
+  \textwidth=210mm%
+  %\textheight=297mm%
+  \paperwidth=210mm%
+  \paperheight=297mm%
+  \footskip=0mm%
+  \maxdepth=0mm%
+  \hsize=210mm%
+  \vsize=297mm%
+  \titlepage}
+\def\EndTitlePage{\endtitlepage\endgroup\newpage}
+
+%
+% Used to place a 3mm grid in the page (useful for positioning things).
+% This macro works correctly when the PostScript file is generated by
+% dvips. Perfect for ghostscript (gv), but very bad when printed. For
+% debugging purposes.
+%
+\iftrue\def\GRID{\special{"gsave initmatrix 72 25.4 div dup scale
+  0 setlinewidth 0.8 setgray newpath
+  0 3 210 { 0 moveto 0 297 rlineto } for
+  0 3 297 { 0 exch moveto 210 0 rlineto } for stroke
+  1 0 0 setrgbcolor newpath
+  15 0 moveto 15 297 lineto 77 0 moveto 77 297 lineto
+  0 293 moveto 210 293 lineto 0 289 moveto 210 289 lineto
+  0 239 moveto 210 239 lineto
+  0 148 moveto 210 148 lineto 0 88 moveto 210 88 lineto
+  77 88 moveto 77 148 lineto 137 88 moveto 137 148 lineto stroke
+  grestore}}
+\fi
+
+%
+% Always indent the first paragraph.
+%
+\let\@afterindentfalse=\@afterindenttrue\@afterindenttrue
+
+%
+% Mark (or not) all horizontal overfull boxes.
+%
+\ifua@draft@
+  \setlength\overfullrule{5mm}
+\else
+  \setlength\overfullrule{0mm}
+\fi
+
+%
+% Add all chapters without numbers (\chapter*) to the table of contents.
+% As a consequence, the bibliography, table of contents, list of figures
+% and list of tables appear in the table of contents.
+%
+% Good for the report and book classes.
+%
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+    % New stuff.
+    % To make the hyperref package do the right thing.
+    \refstepcounter{section}%
+    \addcontentsline{toc}{chapter}{#1}%
+    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+    % End of new stuff.
+  }}
+
+\endinput

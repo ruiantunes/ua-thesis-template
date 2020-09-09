@@ -1,0 +1,256 @@
+%
+% Note that the order that the packages are imported sometimes it
+% matters. That is, some packages should be imported before others.
+% Otherwise, it may not work correctly.
+%
+% You may have to add new packages, remove packages, or modify their
+% input arguments to obtain the intended functionality.
+%
+
+% Input encoding.
+\usepackage[utf8]{inputenc}
+
+% Font encoding.
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+% Using "Latin Modern" font is better.
+% https://tex.stackexchange.com/questions/88368/how-do-i-invoke-cm-super
+% http://tug.org/pipermail/macostex-archives/2004-July/006964.html
+% https://tex.stackexchange.com/questions/30814/identity-of-latex-default-sans-serif-font/30816
+% https://tex.stackexchange.com/questions/66674/when-i-load-multiple-font-packages-which-one-will-win
+% https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+\usepackage{lmodern}
+
+\usepackage[%
+a4paper,%
+% These margins are according to the UA rules.
+% http://www.ua.pt/sga/PageText.aspx?id=4630
+%left=30mm,%
+%right=25mm,%
+%bottom=30mm,%
+%top=30mm,%
+% However, one may want to slightly modify the margins, so there is no
+% shift when changing pages in a PDF document viewer.
+% https://en.wikibooks.org/wiki/Basic_Book_Design/Margins
+left=30mm,%
+right=30mm,%
+bottom=30mm,%
+top=30mm,%
+% To show visible frames for the text area and page.
+%showframe,%
+]{geometry}
+
+% The "csquotes" package should be used with the "babel" package.
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\usepackage[%
+style=USenglish,%
+threshold=1,%
+]{csquotes}
+
+% Line spacing. The "setspace" package has to be loaded before the
+% "hyperref" package to ensure that the links of footnotes are correct.
+% https://tex.stackexchange.com/questions/203439/footnotes-misbehaving-in-report-go-to-front-page-but-behave-correctly-in-other-r
+\usepackage{setspace}
+
+% More colors.
+\usepackage[svgnames]{xcolor}
+
+% To rotate pages.
+\usepackage{pdflscape}
+
+% Mathematical utilities.
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Managing URLs.
+\usepackage[hyphens,spaces]{url}
+
+% BibLaTeX bibliography. Select the preferred citation style.
+% Alternatively, you can configure your own.
+% From the "biblatex" documentation: "When using the hyperref package,
+% it is preferable to load it after biblatex."
+%\input{tex/config/biblatex/numeric}
+\input{tex/config/biblatex/author-year}
+
+% Input ".bib" file name with the references.
+\bibliography{refs}
+
+% To break URLs.
+% https://stackoverflow.com/questions/2625714/linebreak-in-url-with-bibtex-and-hyperref-package
+% https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
+\setcounter{biburlnumpenalty}{3000}
+\setcounter{biburlucpenalty}{6000}
+\setcounter{biburllcpenalty}{9000}
+
+% Add a line break before the URL.
+% https://tex.stackexchange.com/questions/27953/linebreak-before-url-with-biblatex-alphabetic
+\DeclareFieldFormat{formaturl}{\newline #1}
+\renewbibmacro*{url+urldate}{%
+  \printtext[formaturl]{%
+    \printfield{url}}%
+  \iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+     \printtext[urldate]{\printurldate}}}
+
+% References (citations, images, tables, among others).
+% Links cannot break between pages (it is mandatory to manually
+% rearrange the text).
+% https://tex.stackexchange.com/questions/1522/pdfendlink-ended-up-in-different-nesting-level-than-pdfstartlink
+\usepackage[%
+breaklinks,%
+%draft,%
+hidelinks,%
+colorlinks,%
+linktoc=all,%
+% For debugging.
+%allcolors=blue,%
+% For final printed version. Choose the colors you want.
+allcolors=black,%
+linkcolor=black,%
+citecolor=blue,%
+urlcolor=blue,%
+]{hyperref}
+
+% To make the hyperlink put the cursor at the beginning of the figure
+% (that is, not in the figure caption).
+\usepackage[all]{hypcap}
+
+% The "cleveref" package has to be loaded after the "hyperref" package.
+% The "cleveref" has to be loaded after the "amsmath" package to
+% correctly reference equations.
+% https://tex.stackexchange.com/questions/148699/equation-reference-undefined-when-using-cref-and-packageamsmath
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% Multiple references to the same footnote.
+% https://tex.stackexchange.com/questions/10102/multiple-references-to-the-same-footnote-with-hyperref-support-is-there-a-bett
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+% To create hyperlinks from the footnotes at the bottom of the page,
+% back to the occurrence of the footnote in the main text.
+% This package conflicts with the "\footcitetext" command from the
+% "biblatex" package.
+\usepackage{footnotebackref}
+
+% Table footnote.
+% https://tex.stackexchange.com/questions/1583/footnotes-in-tables
+\usepackage{tablefootnote}
+
+% Header and footer treatment.
+\usepackage{fancyhdr}
+
+% To place floats (figures, tables) at fixed position using the
+% "\FloatBarrier" command.
+\usepackage{placeins}
+
+% To allow tables spanning multiple pages.
+% https://texfaq.org/FAQ-longtab
+% To prevent longtable breaking in multirow.
+% https://tex.stackexchange.com/questions/64956/prevent-longtable-breaking-in-multirow
+% A longtable example.
+% http://users.sdsc.edu/~ssmallen/latex/longtable.html
+\usepackage{longtable}
+
+% To enhance the quality of tables.
+\usepackage{booktabs}
+
+% To specify vertical alignment in rows (tables).
+\usepackage{array}
+
+% Horizontally centered and right aligned.
+% https://tex.stackexchange.com/questions/154958/vertically-centered-and-right-left-center-horizontal-alignment-in-tabular
+
+% Note: the following shortcuts for column alignments are easy to
+% memorize. They are the 3x3 square at the left of a QWERTY keyboard.
+
+% --- Top (vertical alignment) ---
+% Justified.
+% p{...}
+% Left-aligned.
+\newcolumntype{Q}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Centered.
+\newcolumntype{W}[1]{>{\centering\arraybackslash}p{#1}}
+% Right-aligned.
+\newcolumntype{E}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% --- Middle (vertical alignment) ---
+% Justified.
+% m{...}
+% Left-aligned.
+\newcolumntype{A}[1]{>{\raggedright\arraybackslash}m{#1}}
+% Centered.
+\newcolumntype{S}[1]{>{\centering\arraybackslash}m{#1}}
+% Right-aligned.
+\newcolumntype{D}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+% --- Bottom (vertical alignment) ---
+% Justified.
+% b{...}
+% Left-aligned.
+\newcolumntype{Z}[1]{>{\raggedright\arraybackslash}b{#1}}
+% Centered.
+\newcolumntype{X}[1]{>{\centering\arraybackslash}b{#1}}
+% Right-aligned.
+\newcolumntype{C}[1]{>{\raggedleft\arraybackslash}b{#1}}
+
+% Extra column with zero width and no padding. This is used to avoid the
+% incorrect alignment in the last column.
+% https://tex.stackexchange.com/questions/159257/increase-latex-table-row-height
+% https://tex.stackexchange.com/questions/68732/vertical-alignment-in-table-m-column-row-size-problem-in-last-column
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+% Empty column separator.
+% https://texfaq.org/FAQ-fixwidtab
+\newcolumntype{O}{@{}}
+
+% To use 2% of the \textwidth as column separator.
+\newcolumntype{I}{@{\hskip 0.02\textwidth}}
+
+% Multirow in tables.
+\usepackage{multirow}
+
+% New lines in multirow cells.
+% https://tex.stackexchange.com/questions/331716/newline-in-multirow-environment
+\usepackage{makecell}
+
+% To change the itemize character.
+\usepackage{enumitem}
+
+% To compact the "itemize" list.
+% https://stackoverflow.com/questions/4968557/latex-very-compact-itemize/4974583#4974583
+\setlist{itemsep=5pt,topsep=5pt,parsep=5pt,partopsep=5pt}
+
+% To place "longtable" tables at the top of the page.
+\usepackage{afterpage}
+
+% Disabling hyphens.
+\usepackage[none]{hyphenat}
+
+% Disable displaying page number, header and footer on empty pages.
+\usepackage{emptypage}
+
+% To force not to break the line after a hyphen. This conflicts with
+% latexdiff.
+% https://tex.stackexchange.com/questions/103608/how-to-force-latex-not-to-break-the-line-after-a-hyphen
+%\usepackage[shortcuts]{extdash}
+
+% List of abbreviations.
+\usepackage[%
+acronym,%
+xindy,%
+style=alttree,%
+nopostdot%
+]{glossaries}
+
+% To add links inside captions.
+% https://tex.stackexchange.com/questions/30800/gls-inside-caption-without-protect
+\robustify{\gls}
+
+% To specify the widest name of the short form of an abbreviation.
+% This applies when the "alttree" style is used.
+\glssetwidest{123456789012345}
+
+% To generate the glossary.
+% https://tex.stackexchange.com/questions/243750/acronym-glossary-doesnt-appear
+\makenoidxglossaries

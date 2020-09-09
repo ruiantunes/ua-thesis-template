@@ -1,0 +1,64 @@
+% 
+% Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
+% Copyright 2018, 2019, 2020 Rui Antunes
+%
+% LaTeX template for theses at University of Aveiro by Rui Antunes.
+% https://github.com/ruiantunes/ua-thesis-template
+% 
+% This code is based on the original LaTeX template created by
+% professor Tomás Oliveira e Silva.
+% http://sweet.ua.pt/tos/TeX.html
+%
+
+% Font size possible values are restricted to 10pt, 11pt and 12pt.
+\documentclass[11pt,twoside,a4paper,openright]{report}
+
+% UA thesis style file. Input your department and scientific area.
+\usepackage[DETI,engineering,draft]{uathesis}
+
+% Select the language (here and below).
+\usepackage[USenglish]{babel}
+%\usepackage[UKenglish]{babel}
+%\usepackage[portuguese]{babel}
+
+% Additional packages.
+\input{tex/config/packages}
+
+% Before begin document.
+\input{tex/config/before-begin}
+
+\begin{document}
+
+% After begin document.
+\input{tex/config/after-begin}
+
+% Select the language (here and above).
+\input{tex/config/languages/english}
+%\input{tex/config/languages/portuguese}
+
+% First pages.
+\input{tex/contents/first-pages}
+
+% Chapter 1.
+\input{tex/contents/c1}
+
+% Chapter 2.
+\input{tex/contents/c2}
+
+% Chapter 3.
+\input{tex/contents/c3}
+
+% Chapter 4.
+\input{tex/contents/c4}
+
+% Bibliography.
+
+% To cite all the references (debugging purposes).
+%\nocite{*}
+
+% The bibliography using BibLaTeX.
+\printbibliography
+
+\cleardoublepage
+
+\end{document}

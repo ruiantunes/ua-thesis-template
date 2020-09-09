@@ -1,0 +1,132 @@
+\chapter{Tips and examples}
+\label{ch:tips-and-examples}
+
+This chapter presents some basic tips and a few examples on how to use \LaTeX.
+
+\section{Basic tips}
+\label{sec:basic-tips}
+
+\begin{itemize}
+\item
+The \verb+\\+ command has the same effect as \verb+\newline+.
+\item
+The \verb+\cleardoublepage+ command forces the next content to start in an odd page.
+\item
+The tilde character (\verb+~+) inserts a non-breaking space. Use it before citing a reference to avoid breaking the line: \verb+an example~\cite{label}+.
+\item
+The current font size is \myfontsize.
+\item
+Use the \verb+longtable+ environment for tables spanning multiple pages.
+\item
+The grave accent \`{} and the apostrophe \textquotesingle\ are the correct symbols to make quotations: ``this is an example''.
+\end{itemize}
+
+\section{Font styles}
+\label{sec:font-styles}
+
+\begin{itemize}
+\item
+\verb+\textnormal{}+ --- \textnormal{document font family}.
+\item
+\verb+\textrm{}+ --- \textrm{roman font family}.
+\item
+\verb+\textsf{}+ --- \textsf{sans serif font family }.
+\item
+\verb+\texttt{}+ --- \texttt{teletypefont family}.
+\item
+\verb+\textit{}+ --- \textit{italic shape}.
+\item
+\verb+\textsl{}+ --- \textsl{slanted shape}.
+\item
+\verb+\textsc{}+ --- \textsc{small capitals}.
+\item
+\verb+\textbf{}+ --- \textbf{bold}.
+\item
+\verb+\mybold{}+ --- \mybold{another type of bold}. (The \verb+\mybold+ command is defined in the \verb+tex/config/after-begin.tex+ file.)
+\end{itemize}
+
+\section{Colors}
+\label{sec:colors}
+
+{\color{red} Red colored text} from the \texttt{color} package.
+{\color{NavyBlue} And NavyBlue colored text} from the \texttt{xcolor} package.
+
+\section{Footnotes}
+\label{sec:footnotes}
+
+This is a labeled footnote\cref{foot:example}. A footnote can be referenced multiple times\footnote{\label{foot:example}This is a footnote example.}. Again, the same footnote is referenced\cref{foot:example}.
+
+\subsection{A table with a footnote}
+\label{ssec:a-table-with-a-footnote}
+
+A table footnote is used in \Cref{tab:table-with-footnote}.
+
+\input{tex/contents/tab/table-with-footnote}
+
+\section{Abbreviations}
+\label{sec:abbreviations}
+
+\verb+\gls{label}+ and \verb+\glslink{label}{text}+ are two possible commands for making use of abbreviations. For example, the commands \verb+\gls{afk}+ (first call), \verb+\gls{afk}+ (second call), and \verb+\glslink{afk}{insert specific text}+ produce respectively ``\gls{afk}'', ``\gls{afk}'' and ``\glslink{afk}{insert specific text}''.
+
+A list of some commands follow.
+
+\begin{itemize}
+\item
+\verb+\gls{afk}+ produces ``\gls{afk}''.
+\item
+\verb+\glslink{afk}{text}+ produces ``\glslink{afk}{text}''.
+\item
+\verb+\acrshort{afk}+ produces ``\acrshort{afk}''.
+\item
+\verb+\acrlong{afk}+ produces ``\acrlong{afk}''.
+\end{itemize}
+
+Other abbreviations include: good work (\acrshort{gw}); have fun (\acrshort{hf}); good work and have fun (\acrshort{gwhf}). Note that the latter contains nested abbreviations.
+
+\section{Equations}
+\label{sec:equations}
+
+\Cref{eq:example1} is a numbered equation.
+
+\begin{equation}
+\label{eq:example1}
+x = 1 + y
+\end{equation}
+
+The following equation is not numbered, and thus cannot be referenced.
+
+\begin{equation*}
+y = \sum_{i=1}^{N}{x_i}
+\end{equation*}
+
+The \verb+\myscore+ pre-defined math function is used by the \Cref{eq:example2}.
+
+\begin{equation}
+\label{eq:example2}
+\myscore(d) = \frac{1}{d^2}
+\end{equation}
+
+\section{Figures}
+\label{sec:figures}
+
+An example of a figure is shown in \Cref{fig:aveiro}. The \verb+\fbox+ command \fbox{draws a box} around its content.
+
+\input{tex/contents/fig/aveiro}
+
+\section{Rotating pages}
+\label{sec:rotating-pages}
+
+Horizontal pages can be obtained using the \verb+landscape+ environment  from the \verb+pdflscape+ package:
+
+\begin{verbatim}
+\begin{landscape}
+Add some text or figures.
+\end{landscape}
+\end{verbatim}
+
+\section{A long table}
+\label{sec:a-long-table}
+
+\Cref{tab:a-long-table} presents a long table using the \verb+longtable+ package. This table can span multiple pages. The \verb+\afterpage+ commands forces the table to start at the top of a page.
+
+\afterpage{\input{tex/contents/tab/a-long-table}}

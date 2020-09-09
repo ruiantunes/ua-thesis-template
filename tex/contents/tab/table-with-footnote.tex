@@ -1,0 +1,21 @@
+\FloatBarrier
+\begin{table}[!htbp]
+\begin{center}
+\label{tab:table-with-footnote}
+\caption{A table with a \texttt{\textbackslash tablefootnote}.}
+\vspace*{5pt}
+\begin{tabular}{||m{3cm}|A{3cm}|S{3cm}|D{3cm}||N}
+\hline
+justified \dummytext & left-aligned \dummytext & centered \dummytext & right-aligned \dummytext & \\
+\hline
+A footnote\tablefootnote{This is a table footnote.} & 2 & 3 & 4 & \\
+\hline
+Single cell & \multicolumn{3}{c||}{A multi-column cell} & \\
+\hline
+\multirow{2}[1]{*}{A multi-row cell} & A simple & ... & ... & \\
+& example & ... & ... & \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\FloatBarrier

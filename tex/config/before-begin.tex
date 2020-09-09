@@ -1,0 +1,36 @@
+% Title and author. This is not mandatory to change, because this is
+% only used by the "\maketitle" command which it is not used in this
+% template.
+\title{The title}
+\author{The author}
+
+% Table of contents depth. This is optional (comment to use default).
+%   Depth of the table of contents (TOC):
+%     1 ... chapter and sections;
+%     2 ... chapters, sections, and subsections;
+%     3 ... chapters, sections, subsections, and subsubsections.
+\setcounter{tocdepth}{2}
+
+% List of abbreviations.
+\input{tex/config/abbreviations}
+
+% Math functions declaration.
+% https://tex.stackexchange.com/questions/95171/how-can-i-define-user-defined-functions-in-math-mode
+% https://tex.stackexchange.com/questions/130510/write-text-correctly-in-equations
+\DeclareMathOperator{\myscore}{score}
+
+% List of manually hyphenated words in case hyphenation is enabled
+% (check the "hyphenat" package). Hyphenation in the middle is desired
+% (better readability).
+\hyphenation{
+% English words.
+ex-am-ple
+mas-sa-chu-setts
+test
+% Portuguese words.
+cien-tí-fico
+con-cei-tos
+exem-plo
+infor-mações
+tes-te
+}
