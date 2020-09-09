@@ -162,37 +162,37 @@ urlcolor=blue,%
 % https://tex.stackexchange.com/questions/154958/vertically-centered-and-right-left-center-horizontal-alignment-in-tabular
 
 % Note: the following shortcuts for column alignments are easy to
-% memorize. They are the 3x3 square at the left of a QWERTY keyboard.
+% memorize. They form a 3x3 square in the QWERTY keyboard layout.
 
 % --- Top (vertical alignment) ---
 % Justified.
 % p{...}
 % Left-aligned.
-\newcolumntype{Q}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{E}[1]{>{\raggedright\arraybackslash}p{#1}}
 % Centered.
-\newcolumntype{W}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\centering\arraybackslash}p{#1}}
 % Right-aligned.
-\newcolumntype{E}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{T}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 % --- Middle (vertical alignment) ---
 % Justified.
 % m{...}
 % Left-aligned.
-\newcolumntype{A}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{D}[1]{>{\raggedright\arraybackslash}m{#1}}
 % Centered.
-\newcolumntype{S}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{F}[1]{>{\centering\arraybackslash}m{#1}}
 % Right-aligned.
-\newcolumntype{D}[1]{>{\raggedleft\arraybackslash}m{#1}}
+\newcolumntype{G}[1]{>{\raggedleft\arraybackslash}m{#1}}
 
 % --- Bottom (vertical alignment) ---
 % Justified.
 % b{...}
 % Left-aligned.
-\newcolumntype{Z}[1]{>{\raggedright\arraybackslash}b{#1}}
+\newcolumntype{C}[1]{>{\raggedright\arraybackslash}b{#1}}
 % Centered.
-\newcolumntype{X}[1]{>{\centering\arraybackslash}b{#1}}
+\newcolumntype{V}[1]{>{\centering\arraybackslash}b{#1}}
 % Right-aligned.
-\newcolumntype{C}[1]{>{\raggedleft\arraybackslash}b{#1}}
+\newcolumntype{B}[1]{>{\raggedleft\arraybackslash}b{#1}}
 
 % Extra column with zero width and no padding. This is used to avoid the
 % incorrect alignment in the last column.
