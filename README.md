@@ -15,9 +15,9 @@ $ latexmk -pdf main.tex
 
 ### Authors
 
-[This code](https://github.com/ruiantunes/ua-thesis-template),
-maintained by Rui Antunes, is based on the original
-[LaTeX template created by professor Tomás Oliveira e Silva](http://sweet.ua.pt/tos/TeX.html).
+This code is maintained by Rui Antunes.
+It is based on the original
+[LaTeX template created by Tomás Oliveira e Silva](http://sweet.ua.pt/tos/TeX.html).
 
 Similar works include the ones by
 [João Paulo Barraca _et al_.](http://code.ua.pt/projects/latex-ua/repository)
