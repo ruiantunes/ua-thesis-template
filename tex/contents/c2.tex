@@ -41,27 +41,25 @@ The grave accent \`{} and the apostrophe \textquotesingle\ are the correct symbo
 \verb+\textsc{}+ --- \textsc{small capitals}.
 \item
 \verb+\textbf{}+ --- \textbf{bold}.
-\item
-\verb+\mybold{}+ --- \mybold{another type of bold}. (The \verb+\mybold+ command is defined in the \verb+tex/config/after-begin.tex+ file.)
 \end{itemize}
 
 \section{Colors}
 \label{sec:colors}
 
 {\color{red} Red colored text} from the \texttt{color} package.
-{\color{NavyBlue} And NavyBlue colored text} from the \texttt{xcolor} package.
+{\color{Blue4} And Blue4 colored text} from the \texttt{xcolor} package.
 
 \section{Footnotes}
 \label{sec:footnotes}
 
 This is a labeled footnote\cref{foot:example}. A footnote can be referenced multiple times\footnote{\label{foot:example}This is a footnote example.}. Again, the same footnote is referenced\cref{foot:example}.
 
-\subsection{A table with a footnote}
-\label{ssec:a-table-with-a-footnote}
+\subsection{A table example}
+\label{ssec:a-table-example}
 
-A table footnote is used in \Cref{tab:table-with-footnote}.
+A table example is shown in \Cref{tab:a-table-example}.
 
-\input{tex/contents/tab/table-with-footnote}
+\input{tex/contents/tab/a-table-example.tex}
 
 \section{Abbreviations}
 \label{sec:abbreviations}
@@ -111,7 +109,7 @@ The \verb+\myscore+ pre-defined math function is used by the \Cref{eq:example2}.
 
 An example of a figure is shown in \Cref{fig:aveiro}. The \verb+\fbox+ command \fbox{draws a box} around its content.
 
-\input{tex/contents/fig/aveiro}
+\input{tex/contents/fig/aveiro.tex}
 
 \section{Rotating pages}
 \label{sec:rotating-pages}
@@ -127,6 +125,6 @@ Add some text or figures.
 \section{A long table}
 \label{sec:a-long-table}
 
-\Cref{tab:a-long-table} presents a long table using the \verb+longtable+ package. This table can span multiple pages. The \verb+\afterpage+ commands forces the table to start at the top of a page.
+\Cref{tab:a-long-table} presents a long table using the \verb+longtable+ package. This table can span multiple pages. The \verb+\afterpage+ command forces the table to start at the top of a page.
 
-\afterpage{\input{tex/contents/tab/a-long-table}}
+\afterpage{\input{tex/contents/tab/a-long-table.tex}}

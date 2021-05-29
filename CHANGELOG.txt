@@ -1,0 +1,19 @@
+2021-05-29
+==========
+
+- UA thesis style file (uathesis.sty):
+  - Renamed directory for the images from `fig` to `img`.
+  - Department name removed from the cover page and the first page.
+  - Vertical space before the rule is always present even when the
+    department name is not shown.
+  - Horizontal rule height set to 1.0pt.
+
+- Choosing pdfTeX or LuaTeX as compiler is now possible. LuaTeX is the
+  default due to its capabilities with font types (fontspec package).
+
+- Language selection is now easier (Portuguese, UKenglish, or
+  USenglish).
+
+- Commands for Latin expressions were added.
+
+- Other small changes.

@@ -1,22 +1,34 @@
+% Select the language (correct expressions).
+\makeatletter
+\ifportuguese@use
+\input{tex/config/language/expressions/portuguese.tex}
+\else
+\ifukenglish@use
+\input{tex/config/language/expressions/english.tex}
+\else
+\ifusenglish@use
+\input{tex/config/language/expressions/english.tex}
+\fi
+\fi
+\fi
+\makeatother
+
 % To change symbol of itemize (size of bullet).
 \renewcommand*{\labelitemi}{$\vcenter{\hbox{\small$\bullet$}}$}
 
 % Horizontal line to separate floats (figures and tables) from text.
-%\def\topfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
-%\def\dblfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
-%\def\botfigrule{\kern -7.8pt \hrule width\textwidth\kern 8.2pt\relax}
+% \def\topfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+% \def\dblfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+% \def\botfigrule{\kern -7.8pt \hrule width\textwidth\kern 8.2pt\relax}
 
 % To increase vertical line spacing in tables.
 \renewcommand{\arraystretch}{1.2}
 
 % To change column separation in tables.
-%\setlength\tabcolsep{10pt}
+% \setlength\tabcolsep{10pt}
 \setlength\tabcolsep{0.02\textwidth}
 
 % New commands.
-
-% See "fontspec" package documentation.
-\newcommand{\mybold}[1]{{\fontseries{b}\selectfont#1}}
 
 % https://tex.stackexchange.com/questions/32160/new-line-after-paragraph
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}}
@@ -31,6 +43,24 @@
 \newcommand{\todo}{{\color{red}\bfseries...to\ do...}}
 
 \newcommand{\dummytext}{a bc def ghij klm no p qr stu vwxy z}
+
+% Latin expressions.
+% https://en.wikipedia.org/wiki/List_of_Latin_phrases
+\newcommand{\adhoc}{\emph{ad hoc}}
+\newcommand{\aposteriori}{\emph{a posteriori}}
+\newcommand{\apriori}{\emph{a priori}}
+\newcommand{\cf}{\emph{cf.}}
+\newcommand{\defacto}{\emph{de facto}}
+\newcommand{\eg}{\emph{e.g.}}
+\newcommand{\ergo}{\emph{ergo}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\etc}{\emph{etc}}
+\newcommand{\ie}{\emph{i.e.}}
+\newcommand{\re}{\emph{re}}
+\newcommand{\versus}{\emph{versus}}
+\newcommand{\viceversa}{\emph{vice versa}}
+\newcommand{\viz}{\emph{viz.}}
+\newcommand{\vs}{\emph{vs}}
 
 % To make text never go over the right margin.
 % https://tex.stackexchange.com/questions/9107/how-can-i-make-my-text-never-go-over-the-right-margin-by-always-hyphenating-or-b

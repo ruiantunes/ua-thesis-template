@@ -1,10 +1,10 @@
-% 
+%
 % Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
-% Copyright 2018, 2019, 2020 Rui Antunes
+% Copyright 2018, 2019, 2020, 2021 Rui Antunes
 %
 % LaTeX template for theses at University of Aveiro by Rui Antunes.
 % https://github.com/ruiantunes/ua-thesis-template
-% 
+%
 % This code is based on the original LaTeX template created by
 % professor Tomás Oliveira e Silva.
 % http://sweet.ua.pt/tos/TeX.html
@@ -12,6 +12,15 @@
 
 %
 % Rui Antunes made the following modifications:
+%
+% - (2021-05-29) Added vertical phantom characters after "Universidade
+%   de Aveiro" to make sure there is always a slight vertical space
+%   before the horizontal rule. Rule height changed from 0.3pt to 1.0pt.
+%
+% - (2021-05-29) "NODEPT" (no department) option was added to remove the
+%   department name from the cover and the first page.
+%
+% - (2021-05-29) Logos are placed in the "./img/logos/" directory.
 %
 % - Choosing font sizes 10pt, 11pt, or 12pt uses a better value for the
 %   first vertical space added in the \HEADER macro. Using a fixed 5mm
@@ -53,8 +62,6 @@
 %
 % - By default the new UA logo is used.
 %
-% - Logos are placed in the "./fig/logos/" directory.
-%
 % References:
 %
 % - The norms/models of the UA theses:
@@ -71,8 +78,8 @@
 %   - https://www.pantone.com/color-finder#/pick
 %
 
-\ProvidesPackage{uathesis}[2020 v0.7.x UA thesis]
-%\ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
+\ProvidesPackage{uathesis}[2021 v0.7.x UA thesis]
+% \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{a4wide}
@@ -80,17 +87,17 @@
 %
 % University logo.
 %
-\DeclareOption{oldLogo}{\def\ua@logo{fig/logos/aveiro-old.pdf}}
-\DeclareOption{newLogo}{\def\ua@logo{fig/logos/aveiro-border.pdf}}
+\DeclareOption{oldLogo}{\def\ua@logo{img/logos/aveiro-old.pdf}}
+\DeclareOption{newLogo}{\def\ua@logo{img/logos/aveiro-border.pdf}}
 
 %
 % MAP joint doctoral programme.
 %
 \newif\ifua@MAP@\ua@MAP@false
 \DeclareOption{MAP}{%
-  \def\ua@logo{fig/logos/aveiro.pdf}%
-  \def\um@logo{fig/logos/minho.pdf}%
-  \def\up@logo{fig/logos/porto.pdf}%
+  \def\ua@logo{img/logos/aveiro.pdf}%
+  \def\um@logo{img/logos/minho.pdf}%
+  \def\up@logo{img/logos/porto.pdf}%
   \ua@MAP@true%
 }
 
@@ -199,6 +206,15 @@
   \def\ua@textC{}%
   \def\ua@textD{}%
 }
+%
+% Special option for not showing any department name.
+%
+\DeclareOption{NODEPT}{%
+  \def\ua@textA{}%
+  \def\ua@textB{}%
+  \def\ua@textC{}%
+  \def\ua@textD{}%
+}
 
 %
 % Color of the cover page top bar.
@@ -291,7 +307,7 @@
 %
 % Default options.
 %
-\ExecuteOptions{DETI}
+\ExecuteOptions{NODEPT}
 \ExecuteOptions{engineering}
 \ExecuteOptions{newLogo}
 \ProcessOptions
@@ -350,7 +366,7 @@
   \hbox{\ua@font@size0\textsf{#1}}}
 \long\def\HEADER#1#2{%
   % Original value was 5mm (default font size was 11pt).
-  %\vspace*{5mm}%
+  % \vspace*{5mm}%
   \ifdim\f@size pt=10pt
     % Correct value for 10pt.
     \vspace*{5.35mm}%
@@ -367,20 +383,24 @@
   \rlap{\parbox{\textwidth}{%
     \ua@font@size0\hspace*{77mm}#1%
     \textsf{\textbf{Universidade de Aveiro}}%
+    %
+    % To keep a slight vertical space between the text and the bar
+    %
+    \vphantom{gjpqy}%
     \space\space\ua@above{\ua@textA}{\ua@textB}%
     \iffalse
-      \hrule width \textwidth height .3pt depth 0mm\relax%
+      \hrule width \textwidth height 1.0pt depth 0mm\relax%
     \else
       % pdflatex apparently draws the logo before the hrule (why?), so
       % we need to split the hrule in two.
       \ifua@MAP@
-        \hrule width 30mm height 0.3pt depth 0mm\relax%
+        \hrule width 30mm height 1.0pt depth 0mm\relax%
       \else
-        \hrule width 66mm height 0.3pt depth 0mm\relax%
+        \hrule width 66mm height 1.0pt depth 0mm\relax%
       \fi
-      \vskip -0.3pt%
+      \vskip -1.0pt%
       \nointerlineskip\moveright 75.2mm%
-      \vbox{\hrule width 134.8mm height 0.3pt depth 0mm}%
+      \vbox{\hrule width 134.8mm height 1.0pt depth 0mm}%
       \nointerlineskip%
     \fi
     \ua@font@size0\hspace*{77mm}%
@@ -408,24 +428,24 @@
           }%
         }%
       }%
-      %\smash{%
-      %  \rlap{%
-      %    %\kern 10mm\lower 110mm%
-      %    %\kern 10mm\lower 140mm%
-      %    %\kern 10mm\lower 160mm%
-      %    \kern 10mm\lower 200mm%
-      %    \hbox{\Huge\textsf{\textbf{DRAFT}}}%
-      %  }%
-      %}%
-      %\smash{%
-      %  \rlap{%
-      %    %\kern 20mm\lower 122mm%
-      %    %\kern 20mm\lower 152mm%
-      %    %\kern 20mm\lower 172mm%
-      %    \kern 20mm\lower 212mm%
-      %    \hbox{\Huge\textsf{\textbf{DOCUMENT}}}%
-      %  }%
-      %}%
+      % \smash{%
+      %   \rlap{%
+      %     % \kern 10mm\lower 110mm%
+      %     % \kern 10mm\lower 140mm%
+      %     % \kern 10mm\lower 160mm%
+      %     \kern 10mm\lower 200mm%
+      %     \hbox{\Huge\textsf{\textbf{DRAFT}}}%
+      %   }%
+      % }%
+      % \smash{%
+      %   \rlap{%
+      %     % \kern 20mm\lower 122mm%
+      %     % \kern 20mm\lower 152mm%
+      %     % \kern 20mm\lower 172mm%
+      %     \kern 20mm\lower 212mm%
+      %     \hbox{\Huge\textsf{\textbf{DOCUMENT}}}%
+      %   }%
+      % }%
     \else\fi
   \par\vspace*{40mm}}
 
@@ -479,7 +499,7 @@
   \headheight=0mm%
   \headsep=0mm%
   \textwidth=210mm%
-  %\textheight=297mm%
+  % \textheight=297mm%
   \paperwidth=210mm%
   \paperheight=297mm%
   \footskip=0mm%

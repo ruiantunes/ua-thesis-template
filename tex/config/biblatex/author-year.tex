@@ -2,13 +2,14 @@
 \usepackage[%
 backend=biber,%
 % Print back references in the bibliography.
-backref=false,%
+% backref=false,%
+backref=true,%
 bibstyle=authoryear,%
 citestyle=authoryear,%
 dashed=false,%
 defernumbers=true,%
 % To use initials for given (first) names.
-%giveninits=true,%
+% giveninits=true,%
 hyperref=true,%
 maxbibnames=999,%
 minbibnames=1,%
@@ -92,7 +93,7 @@ uniquelist=false,%
 \DeclareCiteCommand{\textcite}
   {\boolfalse{cbx:parens}}
   {\usebibmacro{citeindex}%
-   %\printtext[bibhyperref]{\usebibmacro{textcite}}}
+   % \printtext[bibhyperref]{\usebibmacro{textcite}}}
    \printtext[bibhyperref]{\printnames{labelname}\printtext{ \textcolor{black}{[}\printfield{year}\printfield{extradate}\printtext{\textcolor{black}{]}}}}}
   {\ifbool{cbx:parens}
      {\bibcloseparen\global\boolfalse{cbx:parens}}

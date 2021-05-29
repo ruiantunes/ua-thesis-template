@@ -1,10 +1,10 @@
-% 
+%
 % Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
-% Copyright 2018, 2019, 2020 Rui Antunes
+% Copyright 2018, 2019, 2020, 2021 Rui Antunes
 %
 % LaTeX template for theses at University of Aveiro by Rui Antunes.
 % https://github.com/ruiantunes/ua-thesis-template
-% 
+%
 % This code is based on the original LaTeX template created by
 % professor Tomás Oliveira e Silva.
 % http://sweet.ua.pt/tos/TeX.html
@@ -13,43 +13,40 @@
 % Font size possible values are restricted to 10pt, 11pt and 12pt.
 \documentclass[11pt,twoside,a4paper,openright]{report}
 
-% UA thesis style file. Input your department and scientific area.
-\usepackage[DETI,engineering,draft]{uathesis}
+% Select pdfTeX or LuaTeX compiler.
+% \input{tex/config/compiler/pdftex.tex}
+\input{tex/config/compiler/luatex.tex}
 
-% Select the language (here and below).
-\usepackage[USenglish]{babel}
-%\usepackage[UKenglish]{babel}
-%\usepackage[portuguese]{babel}
+% Select language (Portuguese, UK English, or US English).
+% \input{tex/config/language/portuguese.tex}
+% \input{tex/config/language/ukenglish.tex}
+\input{tex/config/language/usenglish.tex}
+
+% UA thesis style file.
+% Input your scientific area (accounting, arts, economy, education,
+% engineering, health, humanities, or sciences).
+% Remove the "draft" option for the final document.
+\usepackage[engineering,draft]{uathesis}
 
 % Additional packages.
-\input{tex/config/packages}
+\input{tex/config/packages.tex}
 
 % Before begin document.
-\input{tex/config/before-begin}
+\input{tex/config/before-begin.tex}
 
 \begin{document}
 
 % After begin document.
-\input{tex/config/after-begin}
-
-% Select the language (here and above).
-\input{tex/config/languages/english}
-%\input{tex/config/languages/portuguese}
+\input{tex/config/after-begin.tex}
 
 % First pages.
-\input{tex/contents/first-pages}
+\input{tex/contents/first-pages.tex}
 
-% Chapter 1.
-\input{tex/contents/c1}
-
-% Chapter 2.
-\input{tex/contents/c2}
-
-% Chapter 3.
-\input{tex/contents/c3}
-
-% Chapter 4.
-\input{tex/contents/c4}
+% Chapters.
+\input{tex/contents/c1.tex}
+\input{tex/contents/c2.tex}
+\input{tex/contents/c3.tex}
+\input{tex/contents/c4.tex}
 
 % Bibliography.
 

@@ -8,7 +8,12 @@
 %
 
 % Input encoding.
+% LuaTeX uses UTF-8 encoding by default.
+\makeatletter
+\ifpdftex@use
 \usepackage[utf8]{inputenc}
+\fi
+\makeatother
 
 % Font encoding.
 \usepackage[T1]{fontenc}
@@ -22,14 +27,34 @@
 % https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
 \usepackage{lmodern}
 
+% Select the language.
+% The "csquotes" package should be used with the "babel" package.
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\makeatletter
+\ifportuguese@use
+\usepackage[portuguese]{babel}
+\usepackage[style=portuguese,threshold=1]{csquotes}
+\else
+\ifukenglish@use
+\usepackage[UKenglish]{babel}
+\usepackage[style=UKenglish,threshold=1]{csquotes}
+\else
+\ifusenglish@use
+\usepackage[USenglish]{babel}
+\usepackage[style=USenglish,threshold=1]{csquotes}
+\fi
+\fi
+\fi
+\makeatother
+
 \usepackage[%
 a4paper,%
 % These margins are according to the UA rules.
 % http://www.ua.pt/sga/PageText.aspx?id=4630
-%left=30mm,%
-%right=25mm,%
-%bottom=30mm,%
-%top=30mm,%
+% left=30mm,%
+% right=25mm,%
+% bottom=30mm,%
+% top=30mm,%
 % However, one may want to slightly modify the margins, so there is no
 % shift when changing pages in a PDF document viewer.
 % https://en.wikibooks.org/wiki/Basic_Book_Design/Margins
@@ -38,30 +63,105 @@ right=30mm,%
 bottom=30mm,%
 top=30mm,%
 % To show visible frames for the text area and page.
-%showframe,%
+% showframe,%
 ]{geometry}
 
-% The "csquotes" package should be used with the "babel" package.
-% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
-\usepackage[%
-style=USenglish,%
-threshold=1,%
-]{csquotes}
+% Font type selection.
+\makeatletter
+\ifpdftex@use
+
+% If pdfTeX in use.
+% Linux libertine font type.
+% https://ctan.org/pkg/libertine
+% Do not use the "amssymb" package if you are using this font with the
+% "newtxmath" package.
+% \usepackage{libertine}
+% \renewcommand{\ttdefault}{lmtt}
+% \usepackage[libertine]{newtxmath}
+
+\else
+\ifluatex@use
+
+% Font selection in LuaTeX.
+% https://ctan.org/pkg/fontspec
+\usepackage{fontspec}
+%
+% By default it is used the CMU font:
+%   main: CMU Serif
+%   sans: CMU Sans Serif
+%   mono: CMU Typewriter Text
+%   math: Latin Modern Math
+%
+% Libertinus font is also a nice choice.
+% https://github.com/alerque/libertinus
+% https://en.wikipedia.org/wiki/Linux_Libertine
+% If you want to use Libertinus select:
+%   main: Libertinus Serif
+%   sans: Libertinus Sans
+%   mono: Inconsolata (one monospaced font at your choice)
+%   math: Libertinus Math
+%
+% You may need to install the fonts if they are missing. You can use
+% other fonts that are not mentioned here.
+% https://www.overleaf.com/learn/latex/Questions/Which_OTF_or_TTF_fonts_are_supported_via_fontspec%3F
+%
+% \setmainfont{BaskervilleF}
+% \setmainfont{CMU Concrete}
+\setmainfont{CMU Serif}
+% \setmainfont{FreeSerif}
+% \setmainfont{Georgia}\renewcommand{\textsc}{\textrm}
+% \setmainfont{Libertinus Serif}
+% \setmainfont{Linux Libertine O}
+% \setmainfont{Noto Serif}
+% \setmainfont{Quattrocento}\renewcommand{\textsc}{\textrm}
+% \setmainfont{TeX Gyre Bonum}
+% \setmainfont{TeX Gyre Pagella}
+% \setmainfont{TeX Gyre Schola}
+% \setmainfont{TeX Gyre Termes}
+% \setmainfont{Times New Roman}\renewcommand{\textsc}{\textrm}
+%
+% \setsansfont{Arial}
+% \setsansfont{CMU Bright}
+\setsansfont{CMU Sans Serif}
+% \setsansfont{CMU Sans Serif Demi Condensed}\renewcommand{\textsf}{\textnormal}
+% \setsansfont{Libertinus Sans}
+% \setsansfont{Linux Biolinum O}
+% \setsansfont{Verdana}
+%
+\setmonofont{CMU Typewriter Text}
+% \setmonofont{Inconsolata}
+%
+% To use \mathbf{} without errors.
+% https://github.com/wspr/unicode-math/issues/556
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+% \setmathfont{Libertinus Math}
+
+\fi
+\fi
+\makeatother
 
 % Line spacing. The "setspace" package has to be loaded before the
 % "hyperref" package to ensure that the links of footnotes are correct.
 % https://tex.stackexchange.com/questions/203439/footnotes-misbehaving-in-report-go-to-front-page-but-behave-correctly-in-other-r
 \usepackage{setspace}
 
-% More colors.
-\usepackage[svgnames]{xcolor}
+\usepackage[font=onehalfspacing]{caption}
+
+% To use more colors.
+\usepackage[x11names,table]{xcolor}
 
 % To rotate pages.
 \usepackage{pdflscape}
 
-% Mathematical utilities.
+% Mathematical utilities. In LuaTeX the "amssymb" package conflicts with
+% the "unicode-math" package.
 \usepackage{amsmath}
+\makeatletter
+\ifpdftex@use
 \usepackage{amssymb}
+\fi
+\makeatother
 
 % Managing URLs.
 \usepackage[hyphens,spaces]{url}
@@ -70,8 +170,8 @@ threshold=1,%
 % Alternatively, you can configure your own.
 % From the "biblatex" documentation: "When using the hyperref package,
 % it is preferable to load it after biblatex."
-%\input{tex/config/biblatex/numeric}
-\input{tex/config/biblatex/author-year}
+\input{tex/config/biblatex/author-year.tex}
+% \input{tex/config/biblatex/numeric.tex}
 
 % Input ".bib" file name with the references.
 \bibliography{refs}
@@ -100,12 +200,13 @@ threshold=1,%
 % https://tex.stackexchange.com/questions/1522/pdfendlink-ended-up-in-different-nesting-level-than-pdfstartlink
 \usepackage[%
 breaklinks,%
-%draft,%
+% draft,%
 hidelinks,%
 colorlinks,%
 linktoc=all,%
+% linktoc=page,%
 % For debugging.
-%allcolors=blue,%
+% allcolors=blue,%
 % For final printed version. Choose the colors you want.
 allcolors=black,%
 linkcolor=black,%
@@ -135,7 +236,10 @@ urlcolor=blue,%
 
 % Table footnote.
 % https://tex.stackexchange.com/questions/1583/footnotes-in-tables
-\usepackage{tablefootnote}
+% From "tablefootnote" documentation (page 20):
+% When the document is compiled with LuaLaTeX, hyperlinks in rotated
+% content will be misplaced. Use it with caution.
+% \usepackage{tablefootnote}
 
 % Header and footer treatment.
 \usepackage{fancyhdr}
@@ -205,7 +309,7 @@ urlcolor=blue,%
 \newcolumntype{O}{@{}}
 
 % To use 2% of the \textwidth as column separator.
-\newcolumntype{I}{@{\hskip 0.02\textwidth}}
+\newcolumntype{I}{@{\hskip0.02\textwidth}}
 
 % Multirow in tables.
 \usepackage{multirow}
@@ -227,13 +331,22 @@ urlcolor=blue,%
 % Disabling hyphens.
 \usepackage[none]{hyphenat}
 
+% For rotating text with the "turn" command.
+\usepackage{rotating}
+
+% To use the "\sfrac" command.
+\usepackage{xfrac}
+
 % Disable displaying page number, header and footer on empty pages.
 \usepackage{emptypage}
 
+% Colored boxes.
+% \usepackage[most]{tcolorbox}
+
 % To force not to break the line after a hyphen. This conflicts with
-% latexdiff.
+% latexdiff. Use it with caution.
 % https://tex.stackexchange.com/questions/103608/how-to-force-latex-not-to-break-the-line-after-a-hyphen
-%\usepackage[shortcuts]{extdash}
+% \usepackage[shortcuts]{extdash}
 
 % List of abbreviations.
 \usepackage[%
@@ -242,6 +355,10 @@ xindy,%
 style=alttree,%
 nopostdot%
 ]{glossaries}
+
+% To disable all abbreviation hyperlinks.
+% https://tex.stackexchange.com/questions/25805/disable-hyperlinks-in-some-entries-for-glossaries
+% \glsdisablehyper
 
 % To add links inside captions.
 % https://tex.stackexchange.com/questions/30800/gls-inside-caption-without-protect
