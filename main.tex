@@ -13,10 +13,6 @@
 % Font size possible values are restricted to 10pt, 11pt and 12pt.
 \documentclass[11pt,twoside,a4paper,openright]{report}
 
-% Select pdfTeX or LuaTeX compiler.
-% \input{tex/config/compiler/pdftex.tex}
-\input{tex/config/compiler/luatex.tex}
-
 % Select language (Portuguese, UK English, or US English).
 % \input{tex/config/language/portuguese.tex}
 % \input{tex/config/language/ukenglish.tex}
@@ -51,11 +47,19 @@
 % Bibliography.
 
 % To cite all the references (debugging purposes).
-%\nocite{*}
+% \nocite{*}
 
 % The bibliography using BibLaTeX.
 \printbibliography
 
+% Appendices.
+\begin{appendices}
+\crefalias{chapter}{appendix}
+\input{tex/contents/a1.tex}
+\input{tex/contents/a2.tex}
+\end{appendices}
+
+% To make sure the document ends with an even number page.
 \cleardoublepage
 
 \end{document}

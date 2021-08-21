@@ -7,13 +7,14 @@
 % input arguments to obtain the intended functionality.
 %
 
+% This package identifies which TeX engine is in use (pdfTeX or LuaTeX).
+\usepackage{iftex}
+
 % Input encoding.
 % LuaTeX uses UTF-8 encoding by default.
-\makeatletter
-\ifpdftex@use
+\ifPDFTeX
 \usepackage[utf8]{inputenc}
 \fi
-\makeatother
 
 % Font encoding.
 \usepackage[T1]{fontenc}
@@ -66,26 +67,27 @@ top=30mm,%
 % showframe,%
 ]{geometry}
 
-% Font type selection.
-\makeatletter
-\ifpdftex@use
+% Mathematical utilities.
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-% If pdfTeX in use.
+\ifPDFTeX
+
+% Font type selection in pdfTeX.
+
 % Linux libertine font type.
 % https://ctan.org/pkg/libertine
-% Do not use the "amssymb" package if you are using this font with the
-% "newtxmath" package.
 % \usepackage{libertine}
 % \renewcommand{\ttdefault}{lmtt}
 % \usepackage[libertine]{newtxmath}
 
 \else
-\ifluatex@use
+\ifLuaTeX
 
-% Font selection in LuaTeX.
+% Font type selection in LuaTeX.
 % https://ctan.org/pkg/fontspec
 \usepackage{fontspec}
-%
+
 % By default it is used the CMU font:
 %   main: CMU Serif
 %   sans: CMU Sans Serif
@@ -137,9 +139,10 @@ top=30mm,%
 \setmathfont{Latin Modern Math}
 % \setmathfont{Libertinus Math}
 
+\else
+\RequireLuaTeX
 \fi
 \fi
-\makeatother
 
 % Line spacing. The "setspace" package has to be loaded before the
 % "hyperref" package to ensure that the links of footnotes are correct.
@@ -153,15 +156,6 @@ top=30mm,%
 
 % To rotate pages.
 \usepackage{pdflscape}
-
-% Mathematical utilities. In LuaTeX the "amssymb" package conflicts with
-% the "unicode-math" package.
-\usepackage{amsmath}
-\makeatletter
-\ifpdftex@use
-\usepackage{amssymb}
-\fi
-\makeatother
 
 % Managing URLs.
 \usepackage[hyphens,spaces]{url}
@@ -185,7 +179,7 @@ top=30mm,%
 
 % Add a line break before the URL.
 % https://tex.stackexchange.com/questions/27953/linebreak-before-url-with-biblatex-alphabetic
-\DeclareFieldFormat{formaturl}{\newline #1}
+\DeclareFieldFormat{formaturl}{\iffieldundef{url}{}{\newline #1}}
 \renewbibmacro*{url+urldate}{%
   \printtext[formaturl]{%
     \printfield{url}}%
@@ -236,7 +230,7 @@ urlcolor=blue,%
 
 % Table footnote.
 % https://tex.stackexchange.com/questions/1583/footnotes-in-tables
-% From "tablefootnote" documentation (page 20):
+% From the "tablefootnote" documentation:
 % When the document is compiled with LuaLaTeX, hyperlinks in rotated
 % content will be misplaced. Use it with caution.
 % \usepackage{tablefootnote}
@@ -328,8 +322,10 @@ urlcolor=blue,%
 % To place "longtable" tables at the top of the page.
 \usepackage{afterpage}
 
-% Disabling hyphens.
-\usepackage[none]{hyphenat}
+% Hyphenation throughout the document.
+\usepackage{hyphenat}
+% To disable hyphenation use the "none" option.
+% \usepackage[none]{hyphenat}
 
 % For rotating text with the "turn" command.
 \usepackage{rotating}
@@ -348,13 +344,20 @@ urlcolor=blue,%
 % https://tex.stackexchange.com/questions/103608/how-to-force-latex-not-to-break-the-line-after-a-hyphen
 % \usepackage[shortcuts]{extdash}
 
-% List of abbreviations.
+% For creating a list of abbreviations.
 \usepackage[%
-acronym,%
-xindy,%
-style=alttree,%
-nopostdot%
-]{glossaries}
+nogroupskip=false,%
+nonumberlist=true,%
+nopostdot=true,%
+% style=alttree,%
+style=listdotted,%
+% style=long,%
+% style=super,%
+shortcuts=abbreviations,%
+% The "uathesis" style file is already adding the glossary into the
+% table of contents.
+toc=false,%
+]{glossaries-extra}
 
 % To disable all abbreviation hyperlinks.
 % https://tex.stackexchange.com/questions/25805/disable-hyperlinks-in-some-entries-for-glossaries
@@ -368,6 +371,23 @@ nopostdot%
 % This applies when the "alttree" style is used.
 \glssetwidest{123456789012345}
 
+% To specify dotted distance between abbreviation and description.
+% This applies when the "listdotted" style is used.
+% https://tex.stackexchange.com/questions/17956/dotted-distance-between-acronym-and-description-in-acronymlist-from-glossaries
+\setlength{\glslistdottedwidth}{.28\textwidth}
+
+% To remove bold of the short forms in the glossary.
+\renewcommand{\glsnamefont}[1]{\normalfont #1}
+
 % To generate the glossary.
 % https://tex.stackexchange.com/questions/243750/acronym-glossary-doesnt-appear
 \makenoidxglossaries
+
+% Appendices.
+% https://ctan.org/pkg/appendix
+% https://texfaq.org/FAQ-appendix
+% https://tex.stackexchange.com/questions/49643/making-appendix-for-thesis
+% Do not use the "page" option if you do not want to create an
+% additional page with only the title "Appendices".
+\usepackage[toc,page]{appendix}
+% \usepackage[toc]{appendix}

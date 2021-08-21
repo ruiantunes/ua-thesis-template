@@ -4,7 +4,7 @@ Check the guidelines for [master](https://www.ua.pt/en/sga/page/12810) and [PhD]
 
 ### LaTeX document generation
 
-You can generate the PDF output file with [latexmk](https://ctan.org/pkg/latexmk) using the following command. Note that, by default, [LuaTeX](https://en.wikipedia.org/wiki/LuaTeX) is used over [pdfTeX](https://en.wikipedia.org/wiki/PdfTeX).
+You can generate the PDF output file with [latexmk](https://ctan.org/pkg/latexmk) using the following command.
 
 ```
 $ latexmk -lualatex main.tex
@@ -12,18 +12,9 @@ $ latexmk -lualatex main.tex
 
 Alternatively, you can use [TeXstudio](https://www.texstudio.org/), [Texmaker](https://www.xm1math.net/texmaker/), [Overleaf](https://www.overleaf.com/), [Visual Studio Code](https://code.visualstudio.com/) with [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop), or [any other LaTeX IDE](https://tex.stackexchange.com/questions/339/latex-editors-ides).
 
+Support for both [pdfTeX](https://en.wikipedia.org/wiki/PdfTeX) and [LuaTeX](https://en.wikipedia.org/wiki/LuaTeX) engines has been guaranteed in this template, but I encourage you to use the latter.
 
-### Why LuaTeX?
-
-If you are curious why I prefer to use LuaTeX, I encourage you to check these articles:
-
-- [The TeX family tree: LaTeX, pdfTeX, XeTeX, LuaTeX and ConTeXt](https://www.overleaf.com/learn/latex/Articles/The_TeX_family_tree:_LaTeX,_pdfTeX,_XeTeX,_LuaTeX_and_ConTeXt)
-
-- [Are there benefits to use XeTeX or LuaTeX if one is to write documents mainly in English?](https://tex.stackexchange.com/questions/548467/are-there-benefits-to-use-xetex-or-luatex-if-one-is-to-write-documents-mainly-in)
-
-- [Why choose LuaLaTeX over XeLaTeX](https://tex.stackexchange.com/questions/126206/why-choose-lualatex-over-xelatex)
-
-- [Differences between LuaTeX, ConTeXt and XeTeX](https://tex.stackexchange.com/questions/36/differences-between-luatex-context-and-xetex)
+You can consult further information about this template in the generated PDF.
 
 
 ### Authors

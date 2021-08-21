@@ -1,8 +1,40 @@
+2021-08-21
+==========
+
+- Added appendices.
+
+- Solved a bug that caused an unwated vertical space (a new line) to be
+  added between bibliography entries. This problem was only noticeable
+  when a bibliography entry had no URL.
+
+- The package "glossaries-extra" is now used in replacement of
+  "glossaries", since it provides additional features.
+
+- Improved automatic detection of the TeX engine: pdfTeX or LuaTeX.
+  Now, it is not necessary to edit the "main.tex" file to choose the TeX
+  compiler.
+
+- Hyphenation is now enabled by default.
+
+- Changed "fancyhdr" heading: chapter is left-aligned at odd pages and
+  right-aligned at even pages.
+
+- Regarding the author-year style. Citations can:
+  - Use parentheses (default behavior) or square brackets.
+  - Link only the year, or include the author name (default behavior).
+
+- Renamed labels of chapters, sections, etc.
+
+- Other small changes.
+
+
+
+
 2021-05-29
 ==========
 
 - UA thesis style file (uathesis.sty):
-  - Renamed directory for the images from `fig` to `img`.
+  - Renamed directory for the images from "fig" to "img".
   - Department name removed from the cover page and the first page.
   - Vertical space before the rule is always present even when the
     department name is not shown.

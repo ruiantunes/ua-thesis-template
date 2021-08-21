@@ -1,29 +1,29 @@
 \chapter{How to reference}
-\label{ch:how-to-reference}
+\label{c3}
 
 This chapter presents how to reference (1) documents such as books, journal articles, conference articles, among other works and (2) elements of this document, such as, chapters, sections, subsections, equations, figures, and tables.
 
 \section{Citing other works}
-\label{sec:citing-other-works}
+\label{c3:s:citing-other-works}
 
 In this template, it is used the \verb+biblatex+ package for citing other works. It is important to note that Bib\TeX\ and Bib\LaTeX\ have many similarities but are two different formats. For example, if you want to indicate a conference's place you have to use the \verb+address+ field in Bib\TeX, but the \verb+venue+ field in Bib\LaTeX. The \verb+address+ field in Bib\LaTeX\ is used to indicate the publisher's local. If you would like to indicate the publisher in journal articles I suggest you to use the \verb+note+ field. By default, the references are expected to be in the \verb+refs.bib+ file. Organize your citations with a reference manager such as, for example, Zotero\footnote{\url{https://www.zotero.org/}} with the Better Bib\TeX\ extension\footnote{\url{https://retorque.re/zotero-better-bibtex/}}. Zotero is what I personally use and recommend. For my citation key labels I use the format \texttt{[author][year][a]}: lowercase string with the last name of the first author followed by the year of the publication and a suffix letter for distinction of repeated works (check the \texttt{refs.bib} file for some examples).
 
 \subsection{The citation style}
-\label{ssec:the-citation-style}
+\label{c3:ss:the-citation-style}
 
 There are several citation styles. You can configure your own, or use one of the two configurations that are already provided in this template:
 
 \begin{itemize}
 \item
-Numeric style: \verb+\input{tex/config/biblatex/numeric.tex}+.
-\item
 Author-year style: \verb+\input{tex/config/biblatex/author-year.tex}+.
+\item
+Numeric style: \verb+\input{tex/config/biblatex/numeric.tex}+.
 \end{itemize}
 
 You can choose one or other in the \verb+tex/config/packages.tex+ file. By default, the author-year style is selected.
 
 \subsection{The citation commands}
-\label{ssec:the-citation-commands}
+\label{c3:ss:the-citation-commands}
 
 A list of citation commands, and examples, follows.
 
@@ -50,18 +50,18 @@ A list of citation commands, and examples, follows.
 
 The \verb+\cite{label}+ command is preferred with the numeric style. In the author-year style, the \verb+\textcite{label}+ and \verb+parencite{label}+ commands should be used.
 
-Multiple citations are allowed by using multiple labes within the same command. Example: \verb+\cite{Silva2012a,Silva1994a}+.
+Multiple citations are allowed by using multiple labels within the same command. Example: \verb+\cite{silva2012a,silva1994a}+.
 
-More examples follow. A \acrshort{phd} thesis~\parencite{silva1994a}. A \acrshort{msc} dissertation~\parencite{antunes2015a}. A conference article~\parencite{antunes2020a}. A journal article~\parencite{antunes2019a}.
+More examples follow. A \as{phd} thesis~\parencite{silva1994a}. A \as{msc} dissertation~\parencite{antunes2015a}. A conference article~\parencite{antunes2020a}. A journal article~\parencite{antunes2019a}.
 
 \section{Referencing elements of this document}
-\label{sec:referencing-elements-of-this-document}
+\label{c3:s:referencing-elements-of-this-document}
 
-\Cref{ch:the-package,ch:how-to-reference} are two chapters.
+\Cref{c1,c3} are two chapters.
 
-\Cref{ch:the-package,ch:tips-and-examples,ch:how-to-reference} are three consecutive chapters.
+\Cref{c1,c2,c3} are three consecutive chapters.
 
-\Cref{sec:citing-other-works,sec:a-section} are two sections.
+\Cref{c3:s:citing-other-works,c3:s:a-section} are two sections.
 
 \Cref{eq:example1,eq:example2} are two numbered equations.
 
@@ -69,15 +69,17 @@ More examples follow. A \acrshort{phd} thesis~\parencite{silva1994a}. A \acrshor
 
 \Cref{tab:a-table-example} is a table.
 
-\Cref{sec:a-section,ssec:a-subsection} have different levels of depth.
+\Cref{c3:s:a-section,c3:ss:a-subsection} have different levels of depth.
+
+\Cref{a1,a2} are two appendices.
 
 \section{A section}
-\label{sec:a-section}
+\label{c3:s:a-section}
 
 This section presents the different levels of depth.
 
 \subsection{A subsection}
-\label{ssec:a-subsection}
+\label{c3:ss:a-subsection}
 
 Text in a subsection.
 

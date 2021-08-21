@@ -27,89 +27,17 @@ uniquelist=false,%
 % https://tex.stackexchange.com/questions/134063/how-to-add-a-comma-between-author-and-year
 \renewcommand*{\nameyeardelim}{\addcomma\space}
 
-% Author-year, square brackets.
-% https://tex.stackexchange.com/questions/16765/biblatex-author-year-square-brackets
-\makeatletter
-
-\newrobustcmd*{\parentexttrack}[1]{%
-  \begingroup
-  \blx@blxinit
-  \blx@setsfcodes
-  \blx@bibopenparen#1\blx@bibcloseparen
-  \endgroup}
-
-\AtEveryCite{%
-  \let\parentext=\parentexttrack%
-  \let\bibopenparen=\bibopenbracket%
-  \let\bibcloseparen=\bibclosebracket}
-
-\makeatother
-
-% Hyperlink name with biblatex authoryear.
-% https://tex.stackexchange.com/questions/1687/hyperlink-name-with-biblatex-authoryear/25972#25972
-
-\DeclareCiteCommand{\cite}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\cite}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{citeyear}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\parencite}[\mkbibparens]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\parencite}[\mkbibparens]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-  \printtext[bibhyperref]{ \usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\textcite}
-  {\boolfalse{cbx:parens}}
-  {\usebibmacro{citeindex}%
-   % \printtext[bibhyperref]{\usebibmacro{textcite}}}
-   \printtext[bibhyperref]{\printnames{labelname}\printtext{ \textcolor{black}{[}\printfield{year}\printfield{extradate}\printtext{\textcolor{black}{]}}}}}
-  {\ifbool{cbx:parens}
-     {\bibcloseparen\global\boolfalse{cbx:parens}}
-     {}%
-   \multicitedelim}
-  {\usebibmacro{textcite:postnote}}
-
-% The left (first) square bracket was being colored.
-% I had to slightly modify the above code.
-% https://tex.stackexchange.com/questions/1687/hyperlink-name-with-biblatex-authoryear/25972#25972
-% https://tex.stackexchange.com/questions/496777/change-color-of-comma-in-citation
-% https://tex.stackexchange.com/questions/299050/macro-for-hyperlinked-citation-in-parentheses
-
 % Make "et al." italic.
 % https://github.com/plk/biblatex/issues/899
 % https://tex.stackexchange.com/questions/40798/how-do-i-get-et-al-to-appear-in-italics-when-using-textcite-or-citeauthor-w
 \DefineBibliographyStrings{english}{
   andothers = {\mkbibemph{et\addabbrvspace al\adddot}}
 }
+
+% To use square brackets instead of parentheses.
+% By default, BibLaTeX uses parentheses.
+% \input{tex/config/biblatex/author-year/square-brackets.tex}
+
+% To also hyperlink the author name.
+% By default, BibLaTeX only hyperlinks the year.
+\input{tex/config/biblatex/author-year/hyperlink-name.tex}
