@@ -9,6 +9,8 @@
 - Changed "fancyhdr" heading (again): chapter is right-aligned at odd
   pages and left-aligned at even pages.
 
+- Make "et al." italic for the Portuguese language.
+
 
 
 

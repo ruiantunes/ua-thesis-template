@@ -1,0 +1,9 @@
+% Make "et al." italic.
+% https://github.com/plk/biblatex/issues/899
+% https://tex.stackexchange.com/questions/40798/how-do-i-get-et-al-to-appear-in-italics-when-using-textcite-or-citeauthor-w
+\DefineBibliographyStrings{english}{
+  andothers = {\mkbibemph{et\addabbrvspace al\adddot}}
+}
+\DefineBibliographyStrings{portuguese}{
+  andothers = {\mkbibemph{et\addabbrvspace al\adddot}}
+}
