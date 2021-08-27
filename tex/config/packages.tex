@@ -359,6 +359,11 @@ shortcuts=abbreviations,%
 toc=false,%
 ]{glossaries-extra}
 
+% To revert \markright, \markboth and \@starttoc related with the
+% \MakeUpperCase command. This is required to not mix up with the
+% uppercase of chapter headings.
+\glsxtrRevertMarks
+
 % To disable all abbreviation hyperlinks.
 % https://tex.stackexchange.com/questions/25805/disable-hyperlinks-in-some-entries-for-glossaries
 % \glsdisablehyper

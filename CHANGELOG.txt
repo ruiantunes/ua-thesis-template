@@ -1,3 +1,17 @@
+2021-08-27
+==========
+
+- Solved a bug that was making some headings (table of contents, list
+  of figures, list of tables, and bibliography) to be kept uppercase.
+  This same bug was also making the appendix heading to have the wrong
+  name ("Chapter" instead of "Appendix").
+
+- Changed "fancyhdr" heading (again): chapter is right-aligned at odd
+  pages and left-aligned at even pages.
+
+
+
+
 2021-08-21
 ==========
 

@@ -93,16 +93,12 @@
 \titlepage\ \endtitlepage
 
 % Specifying header content. In this case it only shows chapter
-% information: right position at even pages, left position at odd pages.
+% information: left position at even pages, right position at odd pages.
 \setlength\headheight{16pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LO,RE]{\fontsize{12}{14.4}\textsc{\leftmark}}
-\fancyhead[LE,RO]{\fontsize{12}{14.4}}
-
-% To make the chapter name lowercase (see "fancyhdr" documentation).
-\renewcommand{\chaptermark}[1]{%
-\markboth{\chaptername\ \thechapter.\ #1}{}}
+\fancyhead[LO,RE]{\fontsize{12}{14.4}}
+\fancyhead[LE,RO]{\fontsize{12}{14.4}\textsc{\nouppercase{\leftmark}}}
 
 % To change the font size of the page numbering in all pages.
 \fancyfoot[C]{\small\thepage}
