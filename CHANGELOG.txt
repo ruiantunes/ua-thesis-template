@@ -1,3 +1,32 @@
+2022-03-09
+==========
+
+- The TeX Gyre Heros font type, a substitute of Helvetica, is now used
+  in the first pages as required in the UA norms.
+
+- UA thesis style file (uathesis.sty):
+  - Added the "draftPT" and "draftEN" options to show respectively
+    "DOCUMENTO PROVISÓRIO" and "DRAFT DOCUMENT" in the first two front
+    pages.
+  - The RGB values of the Pantone colors for the cover page top bar were
+    slightly adjusted according to the official values provided by the
+    UA norms.
+
+- Regarding the BibLaTeX references:
+  - Added the "authoryear-comp" style (compact variant of the
+    "authoryear" style).
+  - The master's thesis text was changed.
+
+- The use of the "xurl" package instead of the "url" package allows to
+  break long URLs in better positions.
+
+- Added the complete text about the funding support.
+
+- Other small changes.
+
+
+
+
 2021-08-27
 ==========
 

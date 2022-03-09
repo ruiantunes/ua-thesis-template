@@ -7,6 +7,25 @@
 % To avoid wrong back references with the biblatex package.
 \pagenumbering{alph}
 
+\begingroup
+% Use Helvetica font in the first pages (according to the UA rules).
+% https://tex.stackexchange.com/questions/427245/how-to-use-helvetica-font-in-online-editor
+% https://www.overleaf.com/learn/latex/Font_typefaces
+% In fact the TeX Gyre Heros is used because it can be used as a
+% substitute for Adobe Helvetica.
+
+\ifPDFTeX
+\renewcommand{\sfdefault}{qhv}
+% \renewcommand{\sfdefault}{phv}
+\fi
+
+\ifLuaTeX
+% \renewfontfamily\sffamily{Arial}
+% \renewfontfamily\sffamily{Arimo}
+% \renewfontfamily\sffamily{Helvetica}
+\renewfontfamily\sffamily{TeX Gyre Heros}
+\fi
+
 % Cover page.
 \TitlePage
   \HEADER{\BAR}{\thesisyear}
@@ -29,7 +48,7 @@
   \vspace*{15mm}
   \TEXT{}{Dissertação/Tese apresentada à Universidade de Aveiro para cumprimento dos requisitos necessários à obtenção do grau de Mestre/Doutor em X, realizada sob a orientação científica de Y, Professor do Departamento Z da Universidade de Aveiro.}
   \vspace*{\fill}
-  \TEXT{}{Apoio financeiro (se aplicável)}
+  \TEXT{}{Apoio financeiro da FCT e do FSE no âmbito do III Quadro Comunitário de Apoio. (se aplicável)}
 \EndTitlePage
 
 % Empty page.
@@ -92,6 +111,9 @@
 % Empty page.
 \titlepage\ \endtitlepage
 
+% End of Helvetica font.
+\endgroup
+
 % Specifying header content. In this case it only shows chapter
 % information: left position at even pages, right position at odd pages.
 \setlength\headheight{16pt}
@@ -152,5 +174,5 @@
 
 % The chapters.
 
-% To count the following pages with arabic numerals.
+% To count the following pages with Arabic numerals.
 \pagenumbering{arabic}

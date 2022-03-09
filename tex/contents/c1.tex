@@ -3,10 +3,13 @@
 
 This chapter presents briefly how to use the \verb+uathesis+ package.
 
+
 \section{UA thesis \LaTeX\ style file}
 \label{c1:s:uathesis-style-file}
 
-The \verb+uathesis+ \LaTeX\ style file was originally created by professor Tomás Oliveira e Silva~\parencite*{silva2012a}, and it is currently available at his home page\footnote{\url{http://sweet.ua.pt/tos/TeX.html}}. In this template it is used a new version modified by Rui Antunes\footnote{\url{https://github.com/ruiantunes/ua-thesis-template}}.
+The \verb+uathesis+ \LaTeX\ style file was originally created by professor Tomás Oliveira e Silva~\parencite*{oliveiraesilva2012a}, and it is currently available at his home page\footnote{\url{http://sweet.ua.pt/tos/TeX.html}}.
+In this template it is used a new version modified by Rui Antunes\footnote{\url{https://github.com/ruiantunes/ua-thesis-template}}.
+
 
 \subsection{Options}
 \label{c1:ss:options}
@@ -19,17 +22,25 @@ The following options are supported:
 \texttt{oldLogo}: to use the old logo of University of Aveiro.
 
 \item
-\texttt{newLogo}: to use the new logo of University of Aveiro (default behaviour).
+\texttt{newLogo}: to use the new logo of University of Aveiro (default behavior).
 
 \item
 \texttt{MAP}: for MAP joint doctoral programmes. The logos from the three universities (Aveiro, Minho, Porto) are used.
 
 \item
-\texttt{draft}: it adds ``draft document'' in the cover page.
+\texttt{draft}: it prints ``DOCUMENTO PROVISÓRIO'' in the first two front pages.
 
 \item
-As of May 29, 2021, the department name shall not appear in the cover and the first page (top header). A new option, \texttt{NODEPT} (no department), was created to suppress the department name (now this is the default behaviour).\\
-However, formerly the department name would appear in the cover and first page, therefore the old options were kept for the sake of preservation. Any department name can be shown by one of the following options: \texttt{DAO}, \texttt{DBIO}, \texttt{DCM}, \texttt{DCSPT}, \texttt{DECA}, \texttt{DECIVIL}, \texttt{DEGEIT}, \texttt{DEM}, \texttt{DEMAC}, \texttt{DEP}, \texttt{DETI}, \texttt{DFIS}, \texttt{DGEO}, \texttt{DLC}, \texttt{DMAT}, \texttt{DQ}.
+\texttt{draftPT}: same as \texttt{draft}.
+
+\item
+\texttt{draftEN}: same as \texttt{draft}, but instead it prints ``DRAFT DOCUMENT''.
+
+\item
+As of May 29, 2021, the department name shall not appear in the cover and the first page (top header).
+A new option, \texttt{NODEPT} (no department), was created to suppress the department name (now this is the default behavior).\\
+However, formerly the department name would appear in the cover and first page, therefore the old options were kept for the sake of preservation.
+Any department name can be shown by using one of the following options: \texttt{DAO}, \texttt{DBIO}, \texttt{DCM}, \texttt{DCSPT}, \texttt{DECA}, \texttt{DECIVIL}, \texttt{DEGEIT}, \texttt{DEM}, \texttt{DEMAC}, \texttt{DEP}, \texttt{DETI}, \texttt{DFIS}, \texttt{DGEO}, \texttt{DLC}, \texttt{DMAT}, \texttt{DQ}.
 
 \item
 The color of the top bar, in the cover page, is defined by specifying one of the following scientific areas: \texttt{accounting}, \texttt{arts}, \texttt{economy}, \texttt{education}, \texttt{engineering}, \texttt{health}, \texttt{humanities}, \texttt{sciences}.

@@ -158,24 +158,23 @@ top=30mm,%
 \usepackage{pdflscape}
 
 % Managing URLs.
-\usepackage[hyphens,spaces]{url}
+\usepackage[hyphens,spaces]{xurl}
 
 % BibLaTeX bibliography. Select the preferred citation style.
 % Alternatively, you can configure your own.
 % From the "biblatex" documentation: "When using the hyperref package,
 % it is preferable to load it after biblatex."
-\input{tex/config/biblatex/author-year.tex}
+% \input{tex/config/biblatex/authoryear.tex}
+\input{tex/config/biblatex/authoryear-comp.tex}
 % \input{tex/config/biblatex/numeric.tex}
 
 % Input ".bib" file name with the references.
 \bibliography{refs}
 
-% To break URLs.
-% https://stackoverflow.com/questions/2625714/linebreak-in-url-with-bibtex-and-hyperref-package
-% https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
-\setcounter{biburlnumpenalty}{3000}
-\setcounter{biburlucpenalty}{6000}
-\setcounter{biburllcpenalty}{9000}
+% To break URLs. These values are recommended in the "xurl" package.
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{200}
+\setcounter{biburlnumpenalty}{100}
 
 % Add a line break before the URL.
 % https://tex.stackexchange.com/questions/27953/linebreak-before-url-with-biblatex-alphabetic
@@ -187,6 +186,16 @@ top=30mm,%
     {}
     {\setunit*{\addspace}%
      \printtext[urldate]{\printurldate}}}
+
+% Changing master's thesis text.
+% https://tex.stackexchange.com/questions/226989/biblatex-changing-key-mastersthesis-to-mphilthesis
+\DefineBibliographyStrings{portuguese}{%
+  mathesis = {Dissertação de mestrado},
+}
+\DefineBibliographyStrings{english}{%
+  % mathesis = {MSc thesis},
+  mathesis = {Master's thesis},
+}
 
 % References (citations, images, tables, among others).
 % Links cannot break between pages (it is mandatory to manually

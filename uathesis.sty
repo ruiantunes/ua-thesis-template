@@ -1,6 +1,6 @@
 %
 % Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
-% Copyright 2018, 2019, 2020, 2021 Rui Antunes
+% Copyright 2018, 2019, 2020, 2021, 2022 Rui Antunes
 %
 % LaTeX template for theses at University of Aveiro by Rui Antunes.
 % https://github.com/ruiantunes/ua-thesis-template
@@ -13,6 +13,15 @@
 %
 % Rui Antunes made the following modifications:
 %
+% - (2022-03-09) Added the "draftPT" and "draftEN" options to show
+%   respectively "DOCUMENTO PROVISÓRIO" and "DRAFT DOCUMENT" in the
+%   first two front pages. Note that the "draft" option has the same
+%   behaviour as the "draftPT" option.
+%
+% - (2022-03-09) The RGB values of the Pantone colors were adjusted to
+%   slightly different new values according to the values provided by
+%   the UA norms.
+%
 % - (2021-05-29) Added vertical phantom characters after "Universidade
 %   de Aveiro" to make sure there is always a slight vertical space
 %   before the horizontal rule. Rule height changed from 0.3pt to 1.0pt.
@@ -22,14 +31,16 @@
 %
 % - (2021-05-29) Logos are placed in the "./img/logos/" directory.
 %
+% Older modifications (kept for preservity):
+%
 % - Choosing font sizes 10pt, 11pt, or 12pt uses a better value for the
 %   first vertical space added in the \HEADER macro. Using a fixed 5mm
 %   produced a small undesirable vertical space in the first pages that
-%   use the \HEADER macro. I adjusted manully these values.
+%   use the \HEADER macro. These values were adjusted manully.
 %   https://tex.stackexchange.com/questions/154602/what-measure-in-the-text-is-it-that-is-the-font-size
 %
-% - "DOCUMENTO PROVISÓRIO" changed to "DRAFT DOCUMENT". Its position and
-%   font color was also altered.
+% - "DOCUMENTO PROVISÓRIO" was changed to "DRAFT DOCUMENT". Its position
+%   and font color was also altered.
 %
 % - Package was renamed from "uaThesis" to "uathesis".
 %
@@ -64,21 +75,18 @@
 %
 % References:
 %
-% - The norms/models of the UA theses:
+% - The norms and models of the UA theses:
 %   - https://www.ua.pt/en/sga/page/12810
 %   - https://www.ua.pt/en/sga/page/4630
 %
-% - List of UA departments:
+% - List of the UA departments:
 %   - https://www.ua.pt/en/departamentos-escolas
 %
 % - MAP joint doctoral programmes:
 %   - http://www.map.edu.pt
 %
-% - Pantone colors:
-%   - https://www.pantone.com/color-finder#/pick
-%
 
-\ProvidesPackage{uathesis}[2021 v0.7.x UA thesis]
+\ProvidesPackage{uathesis}[2022/03/09 v0.7.x UA thesis]
 % \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
@@ -102,10 +110,17 @@
 }
 
 %
-% Use "DRAFT DOCUMENT" (draft) in the cover page.
+% Use "DOCUMENTO PROVISÓRIO" or "DRAFT DOCUMENT" (draft indication) in
+% the first two front pages.
 %
 \newif\ifua@draft@\ua@draft@false
 \DeclareOption{draft}{\ua@draft@true}
+
+\newif\ifua@draftPT@\ua@draftPT@false
+\DeclareOption{draftPT}{\ua@draftPT@true}
+
+\newif\ifua@draftEN@\ua@draftEN@false
+\DeclareOption{draftEN}{\ua@draftEN@true}
 
 %
 % List of departments.
@@ -220,33 +235,33 @@
 % Color of the cover page top bar.
 %
 
-% Color pantone 115.
+% Color Pantone 115.
 \def\ua@pantone@yellow{%
-  \def\ua@red{253}\def\ua@green{218}\def\ua@blue{36}}
+  \def\ua@red{255}\def\ua@green{218}\def\ua@blue{37}}
 
-% Color pantone 264.
+% Color Pantone 264.
 \def\ua@pantone@lilac{%
-  \def\ua@red{193}\def\ua@green{167}\def\ua@blue{226}}
+  \def\ua@red{193}\def\ua@green{175}\def\ua@blue{229}}
 
-% Color pantone 301.
+% Color Pantone 301.
 \def\ua@pantone@darkblue{%
-  \def\ua@red{0}\def\ua@green{75}\def\ua@blue{135}}
+  \def\ua@red{0}\def\ua@green{82}\def\ua@blue{147}}
 
-% Color pantone 484.
+% Color Pantone 484.
 \def\ua@pantone@brick{%
-  \def\ua@red{154}\def\ua@green{51}\def\ua@blue{36}}
+  \def\ua@red{152}\def\ua@green{50}\def\ua@blue{34}}
 
-% Color pantone 1505.
+% Color Pantone 1505.
 \def\ua@pantone@orange{%
-  \def\ua@red{255}\def\ua@green{105}\def\ua@blue{0}}
+  \def\ua@red{255}\def\ua@green{110}\def\ua@blue{0}}
 
-% Color pantone 1787.
+% Color Pantone 1787.
 \def\ua@pantone@red{%
-  \def\ua@red{244}\def\ua@green{54}\def\ua@blue{76}}
+  \def\ua@red{245}\def\ua@green{63}\def\ua@blue{91}}
 
-% Color pantone 3105.
+% Color Pantone 3105.
 \def\ua@pantone@lightblue{%
-  \def\ua@red{104}\def\ua@green{210}\def\ua@blue{223}}
+  \def\ua@red{113}\def\ua@green{214}\def\ua@blue{224}}
 
 \def\ua@white{255}
 
@@ -420,33 +435,41 @@
     \ifua@draft@
       \smash{%
         \rlap{%
-          \kern -10mm%
+          \kern -25mm%
           \lower 30mm%
           \hbox{%
             \color{red}%
-            \Huge\textsf{\textbf{DRAFT DOCUMENT}}%
+            \Huge\textsf{\textbf{DOCUMENTO PROVISÓRIO}}%
           }%
         }%
       }%
-      % \smash{%
-      %   \rlap{%
-      %     % \kern 10mm\lower 110mm%
-      %     % \kern 10mm\lower 140mm%
-      %     % \kern 10mm\lower 160mm%
-      %     \kern 10mm\lower 200mm%
-      %     \hbox{\Huge\textsf{\textbf{DRAFT}}}%
-      %   }%
-      % }%
-      % \smash{%
-      %   \rlap{%
-      %     % \kern 20mm\lower 122mm%
-      %     % \kern 20mm\lower 152mm%
-      %     % \kern 20mm\lower 172mm%
-      %     \kern 20mm\lower 212mm%
-      %     \hbox{\Huge\textsf{\textbf{DOCUMENT}}}%
-      %   }%
-      % }%
-    \else\fi
+    \else
+      \ifua@draftPT@
+        \smash{%
+          \rlap{%
+            \kern -25mm%
+            \lower 30mm%
+            \hbox{%
+              \color{red}%
+              \Huge\textsf{\textbf{DOCUMENTO PROVISÓRIO}}%
+            }%
+          }%
+        }%
+      \else
+        \ifua@draftEN@
+          \smash{%
+            \rlap{%
+              \kern -10mm%
+              \lower 30mm%
+              \hbox{%
+                \color{red}%
+                \Huge\textsf{\textbf{DRAFT DOCUMENT}}%
+              }%
+            }%
+          }%
+        \fi
+      \fi
+    \fi
   \par\vspace*{40mm}}
 
 %
@@ -539,7 +562,15 @@
 \ifua@draft@
   \setlength\overfullrule{5mm}
 \else
-  \setlength\overfullrule{0mm}
+  \ifua@draftPT@
+    \setlength\overfullrule{5mm}
+  \else
+    \ifua@draftEN@
+      \setlength\overfullrule{5mm}
+    \else
+      \setlength\overfullrule{0mm}
+    \fi
+  \fi
 \fi
 
 %

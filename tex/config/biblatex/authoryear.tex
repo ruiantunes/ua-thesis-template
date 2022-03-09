@@ -1,0 +1,40 @@
+% BibLaTeX author-year style.
+\usepackage[%
+backend=biber,%
+% Print back references in the bibliography.
+% backref=false,%
+backref=true,%
+bibstyle=authoryear,%
+citestyle=authoryear,%
+dashed=false,%
+defernumbers=true,%
+% To use initials for given (first) names.
+% giveninits=true,%
+hyperref=true,%
+maxbibnames=999,%
+minbibnames=1,%
+maxcitenames=2,%
+mincitenames=1,%
+sorting=nyt,%
+sortcites=false,%
+uniquename=false,%
+uniquelist=false,%
+]{biblatex}
+
+% To not display first name initials abbreviated.
+% https://tex.stackexchange.com/questions/134535/biblatex-authoryear-style-in-text-citations-display-first-name-initials-for-ce
+
+% Adding a comma between author and year.
+% https://tex.stackexchange.com/questions/134063/how-to-add-a-comma-between-author-and-year
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+
+% Make "et al." italic.
+\input{tex/config/biblatex/authoryear/et-al-italic.tex}
+
+% To use square brackets instead of parentheses.
+% By default, BibLaTeX uses parentheses.
+% \input{tex/config/biblatex/authoryear/square-brackets.tex}
+
+% To also hyperlink the author name.
+% By default, BibLaTeX only hyperlinks the year.
+\input{tex/config/biblatex/authoryear/hyperlink-name.tex}
