@@ -19,7 +19,7 @@ You can consult further information about this template in the generated PDF.
 
 ### Authors
 
-This code is maintained by me, [Rui Antunes](https://ruiantunes.ai/).
+This code is maintained by me, [Rui Antunes](https://github.com/ruiantunes).
 It is based on the original [LaTeX template created by Tomás Oliveira e Silva](http://sweet.ua.pt/tos/TeX.html).
 
 Similar works include the ones by [João Paulo Barraca _et al_.](http://code.ua.pt/projects/latex-ua/repository) and [Fábio Maia _et al_.](https://github.com/detiuaveiro/ua-thesis-template)
