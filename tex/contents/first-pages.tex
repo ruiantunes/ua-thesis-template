@@ -2,10 +2,49 @@
 \newcommand{\authorname}{Rui Marcos\newline Brandão Antunes}
 \newcommand{\englishtitle}{\LaTeX\ template for theses at University of Aveiro}
 \newcommand{\portuguesetitle}{Template \LaTeX\ para teses na Universidade de Aveiro}
-\newcommand{\thesisyear}{2021}
+\newcommand{\thesisyear}{2022}
 
-% To avoid wrong back references with the biblatex package.
-\pagenumbering{alph}
+% Removing the lines with \setcounter{page} in the titlepage definition
+% to disable page numbering restart.
+% https://tex.stackexchange.com/questions/68699/how-to-avoid-page-numbering-being-re-started-by-titlepage
+% https://tex.stackexchange.com/questions/27543/what-does-the-titlepage-environment-do-and-what-are-its-benefits
+% https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/tex/latex/base/report.cls?view=co
+\makeatletter
+\if@compatibility
+  \renewenvironment{titlepage}
+    {%
+      \if@twocolumn
+        \@restonecoltrue\onecolumn
+      \else
+        \@restonecolfalse\newpage
+      \fi
+      \thispagestyle{empty}%
+      % \setcounter{page}\z@
+    }%
+    {\if@restonecol\twocolumn \else \newpage \fi
+    }
+\else
+  \renewenvironment{titlepage}
+    {%
+      \if@twocolumn
+        \@restonecoltrue\onecolumn
+      \else
+        \@restonecolfalse\newpage
+      \fi
+      \thispagestyle{empty}%
+      % \setcounter{page}\@ne
+    }%
+    {\if@restonecol\twocolumn \else \newpage \fi
+     \if@twoside\else
+        % \setcounter{page}\@ne
+     \fi
+    }
+\fi
+\makeatother
+
+% First pages are numbered A, B, C, ...
+% Also, this avoids wrong back references with the biblatex package.
+\pagenumbering{Alph}
 
 \begingroup
 % Use Helvetica font in the first pages (according to the UA rules).
