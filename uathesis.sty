@@ -13,6 +13,10 @@
 %
 % Rui Antunes made the following modifications:
 %
+% - (2022-07-18) Fixed an issue in the \TEXT macro regarding the font
+%   size. Now, \ua@font@size0 is used to make sure the font size remains
+%   the same in the first pages.
+%
 % - (2022-03-09) Added the "draftPT" and "draftEN" options to show
 %   respectively "DOCUMENTO PROVISÓRIO" and "DRAFT DOCUMENT" in the
 %   first two front pages. Note that the "draft" option has the same
@@ -86,7 +90,7 @@
 %   - http://www.map.edu.pt
 %
 
-\ProvidesPackage{uathesis}[2022/03/09 v0.7.x UA thesis]
+\ProvidesPackage{uathesis}[2022/07/18 v0.7.x UA thesis]
 % \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
@@ -500,12 +504,12 @@
 \long\def\TEXT#1#2{%
   \noindent\hspace*{15mm}%
   \parbox[t]{52mm}{%
-    \raggedright\sloppy
-    \textsf{#1}%
+    \raggedright\sloppy%
+    \ua@font@size0\textsf{#1}%
   }%
   \hspace*{10mm}%
   \parbox[t]{120mm}{%
-    \textsf{#2}%
+    \ua@font@size0\textsf{#2}%
   }%
   \par\medskip%
 }
