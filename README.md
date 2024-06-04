@@ -1,5 +1,5 @@
 LaTeX template for theses at University of Aveiro.
-Check the guidelines for [master](https://www.ua.pt/en/sga/page/12810) and [PhD](https://www.ua.pt/en/sga/page/4630) theses.
+Check the guidelines for [master](https://www.ua.pt/en/sga/page/12786) and [PhD](https://www.ua.pt/en/sga/page/4630) theses.
 
 
 ### LaTeX document generation
