@@ -1,3 +1,21 @@
+2024-06-24
+==========
+
+- UA thesis style file (uathesis.sty):
+  - The widths of the 1st and 2nd columns in the \TITLE and \TEXT macros
+    were updated to 47mm and 123mm respectively
+  - In the \TEXT macro the 2nd column is using 10pt font size.
+
+- Some blank vertical spaces in the first pages were updated.
+
+- A page for the acknowledgment of use of AI tools was added in the
+  first pages.
+
+- Other small changes.
+
+
+
+
 2022-07-18
 ==========
 

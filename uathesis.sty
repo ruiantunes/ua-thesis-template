@@ -1,6 +1,6 @@
 %
 % Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
-% Copyright 2018, 2019, 2020, 2021, 2022 Rui Antunes
+% Copyright 2018, 2019, 2020, 2021, 2022, 2024 Rui Antunes
 %
 % LaTeX template for theses at University of Aveiro by Rui Antunes.
 % https://github.com/ruiantunes/ua-thesis-template
@@ -12,6 +12,11 @@
 
 %
 % Rui Antunes made the following modifications:
+%
+% - (2024-06-24) The widths of the 1st and 2nd columns in the \TITLE and
+%   \TEXT macros were updated to 47mm and 123mm respectively. Also, in
+%   the \TEXT macro the 2nd column is using 10pt font size by employing
+%   \ua@font@size3.
 %
 % - (2022-07-18) Fixed an issue in the \TEXT macro regarding the font
 %   size. Now, \ua@font@size0 is used to make sure the font size remains
@@ -90,7 +95,7 @@
 %   - http://www.map.edu.pt
 %
 
-\ProvidesPackage{uathesis}[2022/07/18 v0.7.x UA thesis]
+\ProvidesPackage{uathesis}[2024/06/24 v0.7.x UA thesis]
 % \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
@@ -368,6 +373,8 @@
     \fontsize{\@xivpt}{18}\selectfont
   \or % 11pt \Huge
     \fontsize{\@xxvpt}{30}\selectfont
+  \or % 11pt \small
+    \fontsize{\@xpt}{12.5}\selectfont
   \fi}
 
 %
@@ -483,12 +490,12 @@
 %
 \long\def\TITLE#1#2{%
   \noindent\hspace*{15mm}%
-  \parbox[t]{52mm}{%
+  \parbox[t]{47mm}{%
     \raggedright%
     \ua@font@size1\textsf{\textbf{#1}}%
   }%
   \hspace*{10mm}%
-  \parbox[t]{120mm}{%
+  \parbox[t]{123mm}{%
     \raggedright%
     \ua@font@size1\textsf{\textbf{#2}}%
   }%
@@ -503,13 +510,13 @@
 %
 \long\def\TEXT#1#2{%
   \noindent\hspace*{15mm}%
-  \parbox[t]{52mm}{%
+  \parbox[t]{47mm}{%
     \raggedright\sloppy%
     \ua@font@size0\textsf{#1}%
   }%
   \hspace*{10mm}%
-  \parbox[t]{120mm}{%
-    \ua@font@size0\textsf{#2}%
+  \parbox[t]{123mm}{%
+    \ua@font@size3\textsf{#2}%
   }%
   \par\medskip%
 }
