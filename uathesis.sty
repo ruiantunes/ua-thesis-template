@@ -13,6 +13,14 @@
 %
 % Rui Antunes made the following modifications:
 %
+% - (2024-06-26) The \BAR macro was updated. It is now composed of six
+%   colored horizontal rules so that the bar can have a single color,
+%   two colors, or three colors.
+%   The scientific areas "arts+humanities" and "misc" were added.
+%   The green color was added for other scientific areas.
+%   The RGB values of Pantone colors were slightly updated and obtained
+%   from: https://www.coderstool.com/pantone-rgb
+%
 % - (2024-06-24) The widths of the 1st and 2nd columns in the \TITLE and
 %   \TEXT macros were updated to 47mm and 123mm respectively. Also, in
 %   the \TEXT macro the 2nd column is using 10pt font size by employing
@@ -85,7 +93,7 @@
 % References:
 %
 % - The norms and models of the UA theses:
-%   - https://www.ua.pt/en/sga/page/12810
+%   - https://www.ua.pt/en/sga/page/12786
 %   - https://www.ua.pt/en/sga/page/4630
 %
 % - List of the UA departments:
@@ -95,7 +103,7 @@
 %   - http://www.map.edu.pt
 %
 
-\ProvidesPackage{uathesis}[2024/06/24 v0.7.x UA thesis]
+\ProvidesPackage{uathesis}[2024/06/26 v0.7.x UA thesis]
 % \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
@@ -244,33 +252,37 @@
 % Color of the cover page top bar.
 %
 
-% Color Pantone 115.
+% Color Pantone 115 C.
 \def\ua@pantone@yellow{%
-  \def\ua@red{255}\def\ua@green{218}\def\ua@blue{37}}
+  \def\ua@red{253}\def\ua@green{218}\def\ua@blue{36}}
 
-% Color Pantone 264.
+% Color Pantone 264 C.
 \def\ua@pantone@lilac{%
-  \def\ua@red{193}\def\ua@green{175}\def\ua@blue{229}}
+  \def\ua@red{193}\def\ua@green{167}\def\ua@blue{226}}
 
-% Color Pantone 301.
+% Color Pantone 301 C.
 \def\ua@pantone@darkblue{%
-  \def\ua@red{0}\def\ua@green{82}\def\ua@blue{147}}
+  \def\ua@red{0}\def\ua@green{75}\def\ua@blue{135}}
 
-% Color Pantone 484.
+% Color Pantone 375 C.
+\def\ua@pantone@green{%
+  \def\ua@red{151}\def\ua@green{215}\def\ua@blue{0}}
+
+% Color Pantone 484 C.
 \def\ua@pantone@brick{%
-  \def\ua@red{152}\def\ua@green{50}\def\ua@blue{34}}
+  \def\ua@red{154}\def\ua@green{51}\def\ua@blue{36}}
 
-% Color Pantone 1505.
+% Color Pantone 1505 C.
 \def\ua@pantone@orange{%
-  \def\ua@red{255}\def\ua@green{110}\def\ua@blue{0}}
+  \def\ua@red{255}\def\ua@green{105}\def\ua@blue{0}}
 
-% Color Pantone 1787.
+% Color Pantone 1787 C.
 \def\ua@pantone@red{%
-  \def\ua@red{245}\def\ua@green{63}\def\ua@blue{91}}
+  \def\ua@red{244}\def\ua@green{54}\def\ua@blue{76}}
 
-% Color Pantone 3105.
+% Color Pantone 3105 C.
 \def\ua@pantone@lightblue{%
-  \def\ua@red{113}\def\ua@green{214}\def\ua@blue{224}}
+  \def\ua@red{104}\def\ua@green{210}\def\ua@blue{223}}
 
 \def\ua@white{255}
 
@@ -279,53 +291,95 @@
 %
 \DeclareOption{accounting}{%
   \ua@pantone@darkblue%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \ua@pantone@red%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
-  \ua@pantone@darkblue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \ua@pantone@red%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{arts}{%
   \ua@pantone@lilac%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
+}
+\DeclareOption{arts+humanities}{%
+  \ua@pantone@lilac%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \ua@pantone@darkblue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{economy}{%
   \ua@pantone@red%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@white\let\ua@greenM=\ua@white\let\ua@blueM=\ua@white%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@white\let\ua@greenC=\ua@white\let\ua@blueC=\ua@white%
+  \let\ua@redD=\ua@white\let\ua@greenD=\ua@white\let\ua@blueD=\ua@white%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{education}{%
   \ua@pantone@orange%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{engineering}{%
   \ua@pantone@brick%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{health}{%
   \ua@pantone@yellow%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{humanities}{%
   \ua@pantone@darkblue%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
+}
+\DeclareOption{misc}{%
+  \ua@pantone@green%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
+  \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 \DeclareOption{sciences}{%
   \ua@pantone@lightblue%
-  \let\ua@redT=\ua@red\let\ua@greenT=\ua@green\let\ua@blueT=\ua@blue%
-  \let\ua@redM=\ua@red\let\ua@greenM=\ua@green\let\ua@blueM=\ua@blue%
+  \let\ua@redA=\ua@red\let\ua@greenA=\ua@green\let\ua@blueA=\ua@blue%
   \let\ua@redB=\ua@red\let\ua@greenB=\ua@green\let\ua@blueB=\ua@blue%
+  \let\ua@redC=\ua@red\let\ua@greenC=\ua@green\let\ua@blueC=\ua@blue%
+  \let\ua@redD=\ua@red\let\ua@greenD=\ua@green\let\ua@blueD=\ua@blue%
+  \let\ua@redE=\ua@red\let\ua@greenE=\ua@green\let\ua@blueE=\ua@blue%
+  \let\ua@redF=\ua@red\let\ua@greenF=\ua@green\let\ua@blueF=\ua@blue%
 }
 
 %
@@ -337,21 +391,37 @@
 \ProcessOptions
 
 %
-% Used to place a tri-colored colored bar in the title page. The \BAR
-% macro must be placed inside the first argument of the \HEADER macro.
+% Used to place a six-colored bar in the title page. The \BAR macro must
+% be placed inside the first argument of the \HEADER macro.
+%
+% Note that the bar is composed of six colored horizontal rules so that
+% the bar can have a single color, two colors, or three colors.
 %
 \def\BAR{%
-  % top bar
+  % 1st top bar (A)
   \smash{\rlap{%
-    \textcolor[RGB]{\ua@redT,\ua@greenT,\ua@blueT}%
-    {\vrule width 133mm height 12.000mm depth -10.666mm}}}%
-  % middle bar
+    \textcolor[RGB]{\ua@redA,\ua@greenA,\ua@blueA}%
+    {\vrule width 133mm height 12.0000mm depth -11.3333mm}}}%
+  % 2nd top bar (B)
   \smash{\rlap{%
-    \textcolor[RGB]{\ua@redM,\ua@greenM,\ua@blueM}%
-    {\vrule width 133mm height 10.667mm depth -9.333mm}}}%
-  % bottom bar
-  \smash{\rlap{\textcolor[RGB]{\ua@redB,\ua@greenB,\ua@blueB}%
-  {\vrule width 133mm height 9.334mm depth -8.000mm}}}}%
+    \textcolor[RGB]{\ua@redB,\ua@greenB,\ua@blueB}%
+    {\vrule width 133mm height 11.3334mm depth -10.6666mm}}}%
+  % 1st middle bar (C)
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redC,\ua@greenC,\ua@blueC}%
+    {\vrule width 133mm height 10.6667mm depth -10.0000mm}}}%
+  % 2nd middle bar (D)
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redD,\ua@greenD,\ua@blueD}%
+    {\vrule width 133mm height 10.0001mm depth -9.3333mm}}}%
+  % 1st bottom bar (E)
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redE,\ua@greenE,\ua@blueE}%
+    {\vrule width 133mm height 9.3334mm depth -8.6666mm}}}%
+  % 2nd bottom bar (F)
+  \smash{\rlap{%
+    \textcolor[RGB]{\ua@redF,\ua@greenF,\ua@blueF}%
+    {\vrule width 133mm height 8.6667mm depth -8.0000mm}}}}
 
 %
 % Used to include a figure in the title page. The \FIG macro must be

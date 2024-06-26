@@ -1,9 +1,27 @@
+2024-06-26
+==========
+
+- Added dedication page.
+
+- UA thesis style file (uathesis.sty):
+  - The \BAR macro is now a six-colored bar to allow a unicolor bar, a
+    bicolor bar, or a tricolor bar. Examples:
+    - Brick (engineering).
+    - Blue and red (accounting).
+    - Red, white, and red (economy).
+  - The scientific areas "arts+humanities" and "misc" were added.
+  - The green color was added for other scientific areas. The RGB values
+    of Pantone colors were slightly updated.
+
+
+
+
 2024-06-24
 ==========
 
 - UA thesis style file (uathesis.sty):
   - The widths of the 1st and 2nd columns in the \TITLE and \TEXT macros
-    were updated to 47mm and 123mm respectively
+    were updated to 47mm and 123mm respectively.
   - In the \TEXT macro the 2nd column is using 10pt font size.
 
 - Some blank vertical spaces in the first pages were updated.
