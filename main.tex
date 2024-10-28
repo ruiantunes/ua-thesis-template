@@ -10,8 +10,17 @@
 % http://sweet.ua.pt/tos/TeX.html
 %
 
+% For a faster compilation (debugging purposes only), using image
+% placeholders, employ the "draft" option in the "graphicx" package:
+% \PassOptionsToPackage{draft}{graphicx}
+
 % Font size possible values are restricted to 10pt, 11pt and 12pt.
-\documentclass[11pt,twoside,a4paper,openright]{report}
+\documentclass[%
+11pt,%
+a4paper,%
+twoside,%
+openright,%
+]{report}
 
 % Select language (Portuguese, UK English, or US English).
 % \input{tex/config/language/portuguese.tex}
@@ -31,7 +40,13 @@
 %   - misc
 %   - sciences
 % Remove the "draft" option for the final document.
-\usepackage[engineering,draft]{uathesis}
+\usepackage[%
+draft,%
+engineering,%
+% MAP,%
+% oldLogo,%
+% horizontalRule,%
+]{uathesis}
 
 % Additional packages.
 \input{tex/config/packages.tex}
@@ -44,10 +59,13 @@
 % After begin document.
 \input{tex/config/after-begin.tex}
 
-% First pages.
+% First pages (can be commented to reduce compilation time).
 \input{tex/contents/first-pages.tex}
 
-% Chapters.
+% Table of contents (mandatory for compiling without errors).
+\input{tex/contents/toc.tex}
+
+% Chapters (can be commented).
 \input{tex/contents/c1.tex}
 \input{tex/contents/c2.tex}
 \input{tex/contents/c3.tex}
@@ -58,10 +76,10 @@
 % To cite all the references (debugging purposes).
 % \nocite{*}
 
-% The bibliography using BibLaTeX.
+% The bibliography using BibLaTeX (can be commented).
 \printbibliography
 
-% Appendices.
+% Appendices (can be commented).
 \begin{appendices}
 \crefalias{chapter}{appendix}
 \input{tex/contents/a1.tex}

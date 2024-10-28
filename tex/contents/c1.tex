@@ -19,10 +19,7 @@ The following options are supported:
 \begin{itemize}
 
 \item
-\texttt{oldLogo}: to use the old logo of University of Aveiro.
-
-\item
-\texttt{newLogo}: to use the new logo of University of Aveiro (default behavior).
+\texttt{oldLogo}: to use the old logo of University of Aveiro. If not specified, the new logo is used by default.
 
 \item
 \texttt{MAP}: for MAP joint doctoral programmes. The logos from the three universities (Aveiro, Minho, Porto) are used.
@@ -37,12 +34,16 @@ The following options are supported:
 \texttt{draftEN}: same as \texttt{draft}, but instead it prints ``DRAFT DOCUMENT''.
 
 \item
-As of May 29, 2021, the department name shall not appear in the cover and the first page (top header).
+As of May 29, 2021, the department name shall not appear in the first pages (top header).
 A new option, \texttt{NODEPT} (no department), was created to suppress the department name (now this is the default behavior).\\
 However, formerly the department name would appear in the cover and first page, therefore the old options were kept for the sake of preservation.
 Any department name can be shown by using one of the following options: \texttt{DAO}, \texttt{DBIO}, \texttt{DCM}, \texttt{DCSPT}, \texttt{DECA}, \texttt{DECIVIL}, \texttt{DEGEIT}, \texttt{DEM}, \texttt{DEMAC}, \texttt{DEP}, \texttt{DETI}, \texttt{DFIS}, \texttt{DGEO}, \texttt{DLC}, \texttt{DMAT}, \texttt{DQ}.
 
 \item
 The color of the top bar, in the cover page, is defined by specifying one of the following scientific areas: \texttt{accounting}, \texttt{arts}, \texttt{arts+humanities}, \texttt{economy}, \texttt{education}, \texttt{engineering}, \texttt{health}, \texttt{humanities}, \texttt{misc}, \texttt{sciences}.
+
+\item
+As of October 28, 2024, the horizontal rule shall not appear in the first pages (top header).
+A new option, \texttt{horizontalRule}, was created to keep the old behavior for the sake of preservation. By not specifying this option the default behavior is applied, that is, no horizontal rule is drawn.
 
 \end{itemize}

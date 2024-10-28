@@ -29,6 +29,8 @@ Author-year style:\\\verb+\input{tex/config/biblatex/authoryear.tex}+.
 \item
 Author-year compact style:\\\verb+\input{tex/config/biblatex/authoryear-comp.tex}+
 \item
+IEEE numeric style:\\\verb+\input{tex/config/biblatex/ieee.tex}+.
+\item
 Numeric style:\\\verb+\input{tex/config/biblatex/numeric.tex}+.
 \end{itemize}
 
@@ -39,27 +41,46 @@ By default, the \verb+authoryear-comp+ style is selected.
 \subsection{The citation commands}
 \label{c3:ss:the-citation-commands}
 
-A list of citation commands, and examples, follows.
+A list of citation commands, and examples, follows:
 
 \begin{itemize}
+
 \item
-\verb+\cite{oliveiraesilva2012a}+ produces ``\cite{oliveiraesilva2012a}''.
+\verb+\cite{oliveiraesilva2012a}+ produces:\\
+\cite{oliveiraesilva2012a}
+
 \item
-\verb+\cite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces ``\cite{oliveiraesilva2012a,oliveiraesilva1994a}''.
+\verb+\cite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces:\\
+\cite{oliveiraesilva2012a,oliveiraesilva1994a}
+
 \item
-\verb+\textcite{oliveiraesilva2012a}+ produces ``\textcite{oliveiraesilva2012a}''.
+\verb+\textcite{oliveiraesilva2012a}+ produces:\\
+\textcite{oliveiraesilva2012a}
+
 \item
-\verb+\textcite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces ``\textcite{oliveiraesilva2012a,oliveiraesilva1994a}''.
+\verb+\textcite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces:\\
+\textcite{oliveiraesilva2012a,oliveiraesilva1994a}
+
 \item
-\verb+\parencite{oliveiraesilva2012a}+ produces ``\parencite{oliveiraesilva2012a}''.
+\verb+\parencite{oliveiraesilva2012a}+ produces:\\
+\parencite{oliveiraesilva2012a}
+
 \item
-\verb+\parencite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces ``\parencite{oliveiraesilva2012a,oliveiraesilva1994a}''.
+\verb+\parencite{oliveiraesilva2012a,oliveiraesilva1994a}+ produces:\\
+\parencite{oliveiraesilva2012a,oliveiraesilva1994a}
+
 \item
-\verb+\parencite*{oliveiraesilva2012a}+ produces ``\parencite*{oliveiraesilva2012a}''.
+\verb+\parencite*{oliveiraesilva2012a}+ produces:\\
+\parencite*{oliveiraesilva2012a}
+
 \item
-\verb+\parencite*{oliveiraesilva2012a,oliveiraesilva1994a}+ produces ``\parencite*{oliveiraesilva2012a,oliveiraesilva1994a}''.
+\verb+\parencite*{oliveiraesilva2012a,oliveiraesilva1994a}+ produces:\\
+\parencite*{oliveiraesilva2012a,oliveiraesilva1994a}
+
 \item
-\verb+\fullcite{oliveiraesilva2012a}+ produces:\\``\fullcite{oliveiraesilva2012a}''.
+\verb+\fullcite{oliveiraesilva2012a}+ produces:\\
+\fullcite{oliveiraesilva2012a}
+
 \end{itemize}
 
 The \verb+\cite{label}+ command is preferred with the numeric style.

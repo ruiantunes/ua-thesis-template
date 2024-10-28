@@ -3,17 +3,19 @@
 \caption{A table example.}
 \label{tab:a-table-example}
 \centering
-\begin{tabular}{||m{3cm}|D{3cm}|F{3cm}|G{3cm}||N}
-\hline
-justified \dummytext & left-aligned \dummytext & centered \dummytext & right-aligned \dummytext & \\
-\hline
+\begin{tabular}{m{33.3mm}D{33.3mm}F{33.3mm}G{33.3mm}N}
+\toprule
+justified  & left-aligned & centered   & right-aligned & \\
+\midrule
+\dummytext & \dummytext   & \dummytext & \dummytext    & \\
+\midrule
 This is an example & 2 & 3 & 4 & \\
-\hline
-Single cell & \multicolumn{3}{c||}{A multi-column cell} & \\
-\hline
+\midrule
+Single cell & \multicolumn{3}{|c|}{A multi-column cell} & \\
+\midrule
 \multirow{2}[1]{*}{A multi-row cell} & A simple & ... & ... & \\
 & example & ... & ... & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 \FloatBarrier

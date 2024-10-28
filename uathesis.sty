@@ -13,6 +13,13 @@
 %
 % Rui Antunes made the following modifications:
 %
+% - (2024-10-28) Regarding UA logos: the "newLogo" option was removed,
+%   but the new logo is still used by default. The "oldLogo" option can
+%   be used to employ the old logo, and now it works correctly with the
+%   "MAP" option.
+%   Now, an horizontal rule is not shown in the first pages. To show
+%   this rule, as in the past, we can apply the "horizontalRule" option.
+%
 % - (2024-06-26) The \BAR macro was updated. It is now composed of six
 %   colored horizontal rules so that the bar can have a single color,
 %   two colors, or three colors.
@@ -33,7 +40,7 @@
 % - (2022-03-09) Added the "draftPT" and "draftEN" options to show
 %   respectively "DOCUMENTO PROVISÓRIO" and "DRAFT DOCUMENT" in the
 %   first two front pages. Note that the "draft" option has the same
-%   behaviour as the "draftPT" option.
+%   behavior as the "draftPT" option.
 %
 % - (2022-03-09) The RGB values of the Pantone colors were adjusted to
 %   slightly different new values according to the values provided by
@@ -83,7 +90,7 @@
 %   "DCSPT", "DECA", "DECIVIL", "DEGEIT", "DEM", "DEMAC", "DEP", "DETI",
 %   "DFIS", "DGEO", "DLC", "DMAT", and "DQ".
 %
-% - The "final" option was changed to "draft" (symmetric behaviour). The
+% - The "final" option was changed to "draft" (symmetric behavior). The
 %   "draft" option puts a message warning this is a provisory document.
 %
 % - The comma at the end of the department names was removed.
@@ -103,27 +110,44 @@
 %   - http://www.map.edu.pt
 %
 
-\ProvidesPackage{uathesis}[2024/06/26 v0.7.x UA thesis]
+\ProvidesPackage{uathesis}[2024/10/28 v0.7.x UA thesis]
 % \ProvidesPackage{uaThesis}[2012/05/20 v0.7 UA thesis]
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{a4wide}
 
 %
-% University logo.
+% University logo (by default the new logo is used).
 %
-\DeclareOption{oldLogo}{\def\ua@logo{img/logos/aveiro-old.pdf}}
-\DeclareOption{newLogo}{\def\ua@logo{img/logos/aveiro-border.pdf}}
+\def\ua@logo{img/logos/aveiro-border.pdf}
+
+\newif\ifua@oldLogo@\ua@oldLogo@false
+\DeclareOption{oldLogo}{%
+  \def\ua@logo{img/logos/aveiro-old.pdf}%
+  \ua@oldLogo@true%
+}
 
 %
 % MAP joint doctoral programme.
 %
 \newif\ifua@MAP@\ua@MAP@false
 \DeclareOption{MAP}{%
-  \def\ua@logo{img/logos/aveiro.pdf}%
+  \ifua@oldLogo@
+  \else
+    \def\ua@logo{img/logos/aveiro.pdf}
+  \fi
   \def\um@logo{img/logos/minho.pdf}%
   \def\up@logo{img/logos/porto.pdf}%
   \ua@MAP@true%
+}
+
+%
+% If the option "horizontalRule" is given, then an horizontal rule is
+% drawn in the first pages. Otherwise, no horizontal rule is shown.
+%
+\newif\ifua@horizontalRule@\ua@horizontalRule@false
+\DeclareOption{horizontalRule}{%
+  \ua@horizontalRule@true%
 }
 
 %
@@ -387,7 +411,6 @@
 %
 \ExecuteOptions{NODEPT}
 \ExecuteOptions{engineering}
-\ExecuteOptions{newLogo}
 \ProcessOptions
 
 %
@@ -480,24 +503,30 @@
     \ua@font@size0\hspace*{77mm}#1%
     \textsf{\textbf{Universidade de Aveiro}}%
     %
-    % To keep a slight vertical space between the text and the bar
+    % To keep a slight vertical space between the text and the hrule.
     %
     \vphantom{gjpqy}%
     \space\space\ua@above{\ua@textA}{\ua@textB}%
     \iffalse
       \hrule width \textwidth height 1.0pt depth 0mm\relax%
     \else
-      % pdflatex apparently draws the logo before the hrule (why?), so
-      % we need to split the hrule in two.
-      \ifua@MAP@
-        \hrule width 30mm height 1.0pt depth 0mm\relax%
-      \else
-        \hrule width 66mm height 1.0pt depth 0mm\relax%
-      \fi
-      \vskip -1.0pt%
-      \nointerlineskip\moveright 75.2mm%
-      \vbox{\hrule width 134.8mm height 1.0pt depth 0mm}%
-      \nointerlineskip%
+      \begingroup
+        % pdflatex apparently draws the logo before the hrule (why?), so
+        % we need to split the hrule in two.
+        \ifua@horizontalRule@
+        \else
+          \color{white}
+        \fi
+        \ifua@MAP@
+          \hrule width 30mm height 1.0pt depth 0mm\relax%
+        \else
+          \hrule width 66mm height 1.0pt depth 0mm\relax%
+        \fi
+        \vskip -1.0pt%
+        \nointerlineskip\moveright 75.2mm%
+        \vbox{\hrule width 134.8mm height 1.0pt depth 0mm}%
+        \nointerlineskip%
+      \endgroup
     \fi
     \ua@font@size0\hspace*{77mm}%
     \rlap{\ua@font@size0\textsf{\textbf{\strut #2}}}%
@@ -506,14 +535,30 @@
   }\par%
   \ifua@MAP@
     \ua@font@size0\vspace*{-8.8mm}\noindent\hspace*{32mm}%
-    \includegraphics[height=5mm]{\ua@logo}\hspace*{2mm}%
+    \ifua@oldLogo@
+      \hskip-0.4mm\raisebox{-1.272mm}{\includegraphics[height=6.31mm]{\ua@logo}}\hspace*{2mm}%
+    \else
+      \includegraphics[height=5mm]{\ua@logo}\hspace*{2mm}%
+    \fi
     \includegraphics[height=5mm]{\um@logo}\hspace*{2mm}%
     \includegraphics[height=5mm]{\up@logo}%
   \else
     \ua@font@size0\vspace*{-8.8mm}\noindent\hspace*{67mm}%
     \includegraphics[height=9mm]{\ua@logo}%
   \fi
-    \ifua@draft@
+  \ifua@draft@
+    \smash{%
+      \rlap{%
+        \kern -25mm%
+        \lower 30mm%
+        \hbox{%
+          \color{red}%
+          \Huge\textsf{\textbf{DOCUMENTO PROVISÓRIO}}%
+        }%
+      }%
+    }%
+  \else
+    \ifua@draftPT@
       \smash{%
         \rlap{%
           \kern -25mm%
@@ -525,32 +570,20 @@
         }%
       }%
     \else
-      \ifua@draftPT@
+      \ifua@draftEN@
         \smash{%
           \rlap{%
-            \kern -25mm%
+            \kern -10mm%
             \lower 30mm%
             \hbox{%
               \color{red}%
-              \Huge\textsf{\textbf{DOCUMENTO PROVISÓRIO}}%
+              \Huge\textsf{\textbf{DRAFT DOCUMENT}}%
             }%
           }%
         }%
-      \else
-        \ifua@draftEN@
-          \smash{%
-            \rlap{%
-              \kern -10mm%
-              \lower 30mm%
-              \hbox{%
-                \color{red}%
-                \Huge\textsf{\textbf{DRAFT DOCUMENT}}%
-              }%
-            }%
-          }%
-        \fi
       \fi
     \fi
+  \fi
   \par\vspace*{40mm}}
 
 %

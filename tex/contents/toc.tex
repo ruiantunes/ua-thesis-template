@@ -1,0 +1,29 @@
+% To specify 1x or 1.5x vertical spacing between lines.
+% \singlespacing
+\onehalfspacing
+
+% Tables of contents, of figures, of tables.
+
+% To count the following pages with roman numbering.
+\pagenumbering{roman}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\begingroup
+% To locally reduce vertical space between entries.
+\setlist{itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\printnoidxglossary
+\endgroup
+
+% To specify 1x or 1.5x vertical spacing between lines.
+% \singlespacing
+\onehalfspacing
+
+% The chapters.
+
+% To count the following pages with Arabic numerals.
+\pagenumbering{arabic}

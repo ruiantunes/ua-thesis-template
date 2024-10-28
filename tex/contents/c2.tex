@@ -39,6 +39,8 @@ In this template, support for both pdf\TeX\ and Lua\TeX\ engines has been guaran
 
 \subsection{Compiler automatic detection}
 
+Automatic detection of the \LaTeX\ compiler in use:
+
 \ifPDFTeX
 {\color{red} pdf\TeX\ is being used.}
 
@@ -159,7 +161,7 @@ The following equation is not numbered, and thus cannot be referenced.
 y = \sum_{i=1}^{N}{x_i}
 \end{equation*}
 
-The \verb+\myscore+ pre-defined math function is used by the \Cref{eq:example2}.
+The \verb+\myscore+ pre-defined math function is used in \Cref{eq:example2}.
 
 \begin{equation}
 \label{eq:example2}
@@ -178,7 +180,7 @@ An example of a figure is shown in \Cref{fig:aveiro}. The \verb+\fbox+ command \
 \section{Rotating pages}
 \label{c2:s:rotating-pages}
 
-Horizontal pages can be obtained using the \verb+landscape+ environment  from the \verb+pdflscape+ package:
+Pages can be displayed horizontally (landscape orientation) using the \verb+landscape+ environment  from the \verb+pdflscape+ package as:
 
 \begin{verbatim}
 \begin{landscape}

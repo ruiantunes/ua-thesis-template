@@ -52,17 +52,18 @@
 a4paper,%
 % These margins are according to the UA rules.
 % http://www.ua.pt/sga/PageText.aspx?id=4630
-% left=30mm,%
-% right=25mm,%
-% bottom=30mm,%
-% top=30mm,%
-% However, one may want to slightly modify the margins, so there is no
-% shift when changing pages in a PDF document viewer.
-% https://en.wikibooks.org/wiki/Basic_Book_Design/Margins
 left=30mm,%
-right=30mm,%
+right=25mm,%
 bottom=30mm,%
 top=30mm,%
+% However, one may want to slightly increase the right margin, so there
+% is no shift when changing pages (using single page view) in a PDF
+% document viewer.
+% https://en.wikibooks.org/wiki/Basic_Book_Design/Margins
+% left=30mm,%
+% right=30mm,%
+% bottom=30mm,%
+% top=30mm,%
 % To show visible frames for the text area and page.
 % showframe,%
 ]{geometry}
@@ -184,6 +185,7 @@ top=30mm,%
 % it is preferable to load it after biblatex."
 % \input{tex/config/biblatex/authoryear.tex}
 \input{tex/config/biblatex/authoryear-comp.tex}
+% \input{tex/config/biblatex/ieee.tex}
 % \input{tex/config/biblatex/numeric.tex}
 
 % Input ".bib" file name with the references.
@@ -264,6 +266,35 @@ urlcolor=blue,%
 
 % Header and footer treatment.
 \usepackage{fancyhdr}
+
+% Specifying header content. In this case it only shows chapter
+% information: left position at even pages, right position at odd pages.
+\setlength\headheight{16pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO,RE]{\fontsize{12}{14.4}}
+\fancyhead[LE,RO]{\fontsize{12}{14.4}\textsc{\nouppercase{\leftmark}}}
+
+% To change the font size of the page numbering in all pages.
+\fancyfoot[C]{\small\thepage}
+
+% From the "fancyhdr" package documentation.
+% "Some LATEX commands, like \chapter, use the \thispagestyle command to
+% automatically switch to the plain page style, thus ignoring the page
+% style currently in effect."
+
+% The "fancyhdr" packages does not apply same header/footer on chapter
+% and non-chapter pages.
+% https://tex.stackexchange.com/questions/117328/fancyhdr-does-not-apply-same-header-footer-on-chapter-and-non-chapter-pages
+
+\fancypagestyle{plain}{%
+  % Clear all header and footer fields.
+  \fancyhf{}
+  % Except the center.
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
 
 % To place floats (figures, tables) at fixed position using the
 % "\FloatBarrier" command.

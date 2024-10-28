@@ -1,3 +1,35 @@
+2024-10-28
+==========
+
+- Improving file structure: "toc.tex" is now a separate file containing
+  the table of contents. This allows to comment the "first-pages.tex"
+  part to reduce compilation time.
+
+- Added a suggestion, in the "main.tex" file, to use the "draft" option
+  in the "graphicx" package for a faster compilation.
+
+- Updates according to the UA thesis norms:
+  - Now, the first pages are considered to be a one-sided document. That
+    is, they do not contain any blank pages (empty pages were removed).
+    Only from the table of contents (inclusive) the document is
+    considered to be two-sided.
+
+- UA thesis style file (uathesis.sty):
+  - The "newLogo" option was removed, but the new logo is still used by
+    default.
+  - The "oldLogo" option can be used to employ the old logo, and now
+    works correctly with the "MAP" option.
+  - Now, by default, no horizontal rule is shown in the first pages.
+
+- Added the "ieee.tex" file to easily employ the IEEE BibLaTeX style.
+
+- Other small changes:
+  - Right margin changed back to 25mm.
+  - Fixed "Underfull \hbox" warnings.
+
+
+
+
 2024-06-26
 ==========
 
