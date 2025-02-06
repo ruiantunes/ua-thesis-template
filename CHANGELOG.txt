@@ -1,3 +1,18 @@
+2025-02-06
+==========
+
+- The "titlesec" package is now included to improve the customization of
+  title styles. However, be aware that the packages "titlesec" and
+  "hyperref" may conflict.
+
+- Fixed a bug that was causing the first page of Chapter 1 to begin as
+  page number 3 instead of page number 1 (as intended).
+
+- Other small changes.
+
+
+
+
 2024-10-28
 ==========
 
@@ -11,7 +26,7 @@
 - Updates according to the UA thesis norms:
   - Now, the first pages are considered to be a one-sided document. That
     is, they do not contain any blank pages (empty pages were removed).
-    Only from the table of contents (inclusive) the document is
+    Only starting from the table of contents (inclusive) the document is
     considered to be two-sided.
 
 - UA thesis style file (uathesis.sty):

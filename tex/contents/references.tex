@@ -1,0 +1,13 @@
+% To properly end the last page of the last chapter, so that the page
+% number of the bibliography is correct (in the table of contents).
+\cleardoublepage
+
+% Bibliography.
+
+% To cite all the references (debugging purposes).
+% \nocite{*}
+
+% The bibliography using BibLaTeX.
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+\printbibliography

@@ -163,6 +163,21 @@ top=30mm,%
 \fi
 \fi
 
+% For customizing chapter styles.
+% https://texblog.org/2012/07/03/fancy-latex-chapter-styles/
+% Warning: the "titlesec" package may conflict with the "hyperref"
+% package. The package "titlesec" should be loaded before "hyperref".
+% https://tex.stackexchange.com/questions/364010/hyperref-and-titlesec-conflict-and-warning
+\usepackage{titlesec}
+
+% Select the preferred chapter style.
+% \input{tex/config/titlesec/default.tex}
+% \input{tex/config/titlesec/style1.tex}
+\input{tex/config/titlesec/style2.tex}
+% \input{tex/config/titlesec/style3.tex}
+% \input{tex/config/titlesec/style4.tex}
+% \input{tex/config/titlesec/style5.tex}
+
 % Line spacing. The "setspace" package has to be loaded before the
 % "hyperref" package to ensure that the links of footnotes are correct.
 % https://tex.stackexchange.com/questions/203439/footnotes-misbehaving-in-report-go-to-front-page-but-behave-correctly-in-other-r
@@ -216,6 +231,17 @@ top=30mm,%
   % mathesis = {MSc thesis},
   mathesis = {Master's thesis},
 }
+
+% Appendices.
+% https://ctan.org/pkg/appendix
+% https://texfaq.org/FAQ-appendix
+% https://tex.stackexchange.com/questions/49643/making-appendix-for-thesis
+% Load the "appendix" package before the "hyperref" package to avoid
+% conflicts.
+% Do not use the "page" option if you do not want to create an
+% additional page with only the title "Appendices".
+\usepackage[toc,page]{appendix}
+% \usepackage[toc]{appendix}
 
 % References (citations, images, tables, among others).
 % Links cannot break between pages (it is mandatory to manually
@@ -445,12 +471,3 @@ toc=false,%
 % To generate the glossary.
 % https://tex.stackexchange.com/questions/243750/acronym-glossary-doesnt-appear
 \makenoidxglossaries
-
-% Appendices.
-% https://ctan.org/pkg/appendix
-% https://texfaq.org/FAQ-appendix
-% https://tex.stackexchange.com/questions/49643/making-appendix-for-thesis
-% Do not use the "page" option if you do not want to create an
-% additional page with only the title "Appendices".
-\usepackage[toc,page]{appendix}
-% \usepackage[toc]{appendix}

@@ -1,0 +1,30 @@
+% Veelo chapter style. Adapted from:
+% https://tex.stackexchange.com/questions/487917/setting-chapter-style-with-bar
+% https://tex.stackexchange.com/questions/177144/chapter-style-report-class
+% Note that you can change \rule{30pt} to another width (such as 28pt
+% or 32pt if you prefer a thinner or thicker bar).
+\newcommand*\HUGE{\Huge}
+\newcommand*\chapnamefont{\normalfont\LARGE\MakeUppercase}
+\newcommand*\chapnumfont{\normalfont\HUGE}
+\newcommand*\chaptitlefont{\normalfont\HUGE\bfseries}
+
+\newlength\beforechapskip
+\newlength\midchapskip
+\setlength\midchapskip{\paperwidth}
+\addtolength\midchapskip{-\textwidth}
+\addtolength\midchapskip{-\oddsidemargin}
+\addtolength\midchapskip{-1in}
+\setlength\beforechapskip{18mm}
+
+\titleformat{\chapter}[display]
+  {\normalfont\filleft}
+  {{\chapnamefont\chaptertitlename}%
+    \rlap{\hspace{.8em}%
+      \makebox[\dimexpr\oddsidemargin+\hoffset+1in][s]{{\resizebox{!}{\beforechapskip}{\chapnumfont\thechapter}}\hfill%
+      \rule{30pt}{\beforechapskip}}%
+    }%
+  }%
+  {25pt}
+  {\chaptitlefont}
+\titlespacing*{\chapter}
+  {0pt}{40pt}{40pt}

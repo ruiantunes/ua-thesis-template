@@ -1,0 +1,9 @@
+% Adapted from:
+% https://tex.stackexchange.com/questions/77788/chapter-titles-using-titlesec
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\filcenter}{\LARGE\thechapter}{1ex}
+  {\titlerule[2pt]\vspace{2ex}\LARGE}[\vspace{1ex}{\titlerule[2pt]}]
+
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\LARGE\bfseries\filcenter}{}{1ex}
+  {\vspace{2ex}}[\vspace{1ex}]

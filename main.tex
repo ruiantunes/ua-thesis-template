@@ -1,6 +1,6 @@
 %
 % Copyright 1999, 2007, 2009 Tomás Oliveira e Silva
-% Copyright 2018, 2019, 2020, 2021, 2022, 2024 Rui Antunes
+% Copyright 2018, 2019, 2020, 2021, 2022, 2024, 2025 Rui Antunes
 %
 % LaTeX template for theses at University of Aveiro by Rui Antunes.
 % https://github.com/ruiantunes/ua-thesis-template
@@ -71,20 +71,11 @@ engineering,%
 \input{tex/contents/c3.tex}
 \input{tex/contents/c4.tex}
 
-% Bibliography.
-
-% To cite all the references (debugging purposes).
-% \nocite{*}
-
-% The bibliography using BibLaTeX (can be commented).
-\printbibliography
+% References (can be commented).
+\input{tex/contents/references.tex}
 
 % Appendices (can be commented).
-\begin{appendices}
-\crefalias{chapter}{appendix}
-\input{tex/contents/a1.tex}
-\input{tex/contents/a2.tex}
-\end{appendices}
+\input{tex/contents/appendices.tex}
 
 % To make sure the document ends with an even number page.
 \cleardoublepage

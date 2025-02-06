@@ -1,0 +1,18 @@
+% Adapted from:
+% https://pt.overleaf.com/learn/latex/Sections_and_chapters
+\titleformat
+  {\chapter} % command
+  [display] % shape
+  {\bfseries\LARGE} % format
+  {\chaptertitlename\ \thechapter} % label
+  {0.5ex} % sep
+  {
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+    \huge
+  } % before-code
+  [
+    \vspace{-2.0ex}%
+    \rule{\textwidth}{1pt}
+  ] % after-code

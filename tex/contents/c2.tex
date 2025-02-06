@@ -5,11 +5,11 @@ This chapter presents some basic tips and a few examples on how to use \LaTeX.
 
 
 \section{\TeX\ engines}
-\label{c2:s:latex-engines}
+\label{c2:s:tex-engines}
 
 There are several \TeX\ engines.
 In short, these are used to compile the (La)TeX source code to generate the output file (for example, a \as{pdf}).
-To know more about these, I encourage you to check these articles:
+To know more about these, I suggest you to check these articles:
 
 \begin{itemize}
 \item
@@ -59,6 +59,8 @@ You are using the recommended compiler.
 
 \begin{itemize}
 \item
+Use the \verb+%+ (percentage) symbol to comment (ignore) lines in the source code.
+\item
 The \verb+\\+ and \verb+\newline+ commands are similar, but are not the same.\\
 \url{https://tex.stackexchange.com/questions/27028/what-is-the-difference-between-newline-and}.
 \item
@@ -73,6 +75,57 @@ Use the \verb+longtable+ environment for tables spanning multiple pages.
 \item
 The grave accent \`{} and the apostrophe \textquotesingle\ are the correct symbols to make quotations: ``this is an example''.
 \end{itemize}
+
+
+\section{How to compile the document faster}
+\label{c2:s:how-to-compile-the-document-faster}
+
+Some techniques can be employed to compile the document faster (note that these do not apply for generating the final document).
+In the \verb+main.tex+ file:
+
+\begin{itemize}
+\item Use the \verb+draft+ option in the \verb+graphicx+ package (images will be replaced by placeholders of the same size);
+\item Comment the \verb+first-pages.tex+ file;
+\item Compile only the chapter that you're currently working with (the other chapters can be commented);
+\item You may also comment the references and appendices.
+\end{itemize}
+
+
+\section{The chapter style}
+\label{c2:s:the-chapter-style}
+
+Using the \verb+titlesec+ package you can build your own chapter style.
+Instead, for ease of use, you may use one of the styles that are already provided in this template:
+
+\begin{itemize}
+
+\item
+Default style:\\
+\verb+\input{tex/config/titlesec/default.tex}+
+
+\item
+Veelo chapter style:\\
+\verb+\input{tex/config/titlesec/style1.tex}+
+
+\item
+Centered title within two rules:\\
+\verb+\input{tex/config/titlesec/style2.tex}+
+
+\item
+Left-aligned title within two rules (no chapter number):\\
+\verb+\input{tex/config/titlesec/style3.tex}+
+
+\item
+Title with a bottom rule:\\
+\verb+\input{tex/config/titlesec/style4.tex}+
+
+\item
+Centered title within two rules (but unnumbered chapters have no rules):\\
+\verb+\input{tex/config/titlesec/style5.tex}+
+
+\end{itemize}
+
+You can make this selection in the \verb+tex/config/packages.tex+ file.
 
 
 \section{Font styles}
@@ -101,8 +154,8 @@ The grave accent \`{} and the apostrophe \textquotesingle\ are the correct symbo
 \section{Colors}
 \label{c2:s:colors}
 
-{\color{red} Red colored text} from the \texttt{color} package.
-{\color{Blue4} And Blue4 colored text} from the \texttt{xcolor} package.
+An example of {\color{red} red colored text} from the \texttt{color} package.
+And {\color{Blue4} Blue4 colored text} from the \texttt{xcolor} package.
 
 \section{Footnotes}
 \label{c2:s:footnotes}
@@ -196,4 +249,4 @@ Add some text or figures.
 This table can span multiple pages.
 The \verb+\afterpage+ command forces the table to start at the top of a page.
 
-\afterpage{\input{tex/contents/tab/a-long-table.tex}}
+\afterpage{\input{tex/contents/tab/a-long-table.tex}}\cleardoublepage
