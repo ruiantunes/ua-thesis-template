@@ -10,14 +10,14 @@
 % This package identifies which TeX engine is in use (pdfTeX or LuaTeX).
 \usepackage{iftex}
 
+\ifPDFTeX
 % Input encoding.
 % LuaTeX uses UTF-8 encoding by default.
-\ifPDFTeX
 \usepackage[utf8]{inputenc}
-\fi
-
 % Font encoding.
 \usepackage[T1]{fontenc}
+\fi
+
 \usepackage{textcomp}
 
 % Using "Latin Modern" font is better.
@@ -73,6 +73,8 @@ top=30mm,%
 \usepackage{amssymb}
 
 \ifPDFTeX
+% Access to bold math symbols.
+% \usepackage{bm}
 
 % Font type selection in pdfTeX.
 
@@ -154,6 +156,7 @@ top=30mm,%
 %
 % To use \mathbf{} without errors.
 % https://github.com/wspr/unicode-math/issues/556
+% https://tex.stackexchange.com/questions/528831/why-doesnt-the-bm-package-work-with-the-unicode-math-package
 \usepackage{unicode-math}
 \setmathfont{Latin Modern Math}
 % \setmathfont{Libertinus Math}
@@ -172,8 +175,8 @@ top=30mm,%
 
 % Select the preferred chapter style.
 % \input{tex/config/titlesec/default.tex}
-% \input{tex/config/titlesec/style1.tex}
-\input{tex/config/titlesec/style2.tex}
+\input{tex/config/titlesec/style1.tex}
+% \input{tex/config/titlesec/style2.tex}
 % \input{tex/config/titlesec/style3.tex}
 % \input{tex/config/titlesec/style4.tex}
 % \input{tex/config/titlesec/style5.tex}
@@ -193,6 +196,9 @@ top=30mm,%
 
 % Managing URLs.
 \usepackage[hyphens,spaces]{xurl}
+
+% International System of Units (SI).
+\usepackage{siunitx}
 
 % BibLaTeX bibliography. Select the preferred citation style.
 % Alternatively, you can configure your own.
@@ -286,7 +292,7 @@ urlcolor=blue,%
 % Table footnote.
 % https://tex.stackexchange.com/questions/1583/footnotes-in-tables
 % From the "tablefootnote" documentation:
-% When the document is compiled with LuaLaTeX, hyperlinks in rotated
+% When the document is compiled with LuaTeX, hyperlinks in rotated
 % content will be misplaced. Use it with caution.
 % \usepackage{tablefootnote}
 

@@ -1,0 +1,148 @@
+% This file allows the author to manually create a "Notation",
+% "Nomenclature", or "List of symbols" section, by having full control
+% and design freedom. Also, it has no special package dependencies.
+%
+% This "notation.tex" file was inspired from other works:
+%
+% [1] Tiago Almeida (2025).
+%     Biomedical question answering: from retrieval to answer generation.
+%     http://hdl.handle.net/10773/44153
+%
+% [2] Ian Goodfellow, Yoshua Bengio, and Aaron Courville (2016).
+%     Deep Learning.
+%     https://www.deeplearningbook.org
+%     https://github.com/goodfeli/dlbook_notation/
+%
+% [3] Yarin Gal (2016).
+%     Uncertainty in deep learning.
+%     https://idiscover.lib.cam.ac.uk/permalink/f/t9gok8/44CAM_ALMA21582084170003606
+%
+% [4] Simon Baker (2017).
+%     Semantic text classification for cancer text mining.
+%     https://doi.org/10.17863/CAM.23105
+%
+% Different ways (more or less complex, and more or less automatic) of
+% achieving a similar result do exist, but are not implemented in this
+% template. For example, see:
+%   https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
+%   https://www.overleaf.com/learn/latex/Nomenclatures
+
+\begingroup
+% Set the glue (vertical space) before a "longtable" to be 0pt.
+% https://tex.stackexchange.com/questions/424176/longtable-vertical-space
+\setlength{\LTpre}{0pt}
+
+% Make the "longtable" environment to be left-aligned by default.
+% https://stackoverflow.com/questions/3345077/latex-left-align-a-table-ie-not-centred-from-the-preamble
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{\fill}
+
+% Set the "tocdepth" counter to 0 so only the chapter-level is shown
+% at the table of contents.
+% https://tex.stackexchange.com/questions/4102/setting-setcountertocdepth-for-an-individual-chapter
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+% Set the "secnumdepth" counter to 0 so no section level is numbered.
+\setcounter{secnumdepth}{0}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\notationname}
+\chapter*{\notationname}
+\markboth{\notationname}{}
+\label{notation}
+
+This part of the template can be edited to manually create a \textbf{Notation}, \textbf{Nomenclature}, or \textbf{List of symbols} section, as the author may prefer.
+I leave below a draft of what it may look like.
+
+
+\section{Physical constants}
+\label{notation:s:physical-constants}
+% Adapted from:
+% https://www.overleaf.com/learn/latex/Nomenclatures
+
+\begin{longtable}{llr}
+$G$ & Gravitational constant     & \SI[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}\\
+$c$ & Speed of light in a vacuum & \SI{299792458}{\meter\per\second}\\
+$h$ & Planck constant            & \SI[group-digits=false]{6.62607015e-34}{\joule\per\hertz}\\
+\end{longtable}
+
+
+\section{Mathematical symbols}
+\label{notation:s:mathematical-symbols}
+% Adapted from:
+% https://en.wikipedia.org/wiki/Glossary_of_mathematical_symbols
+
+
+\subsection{Arithmetic operators}
+\label{notation:ss:arithmetic-operators}
+
+\begin{longtable}{ll}
+$+$      & plus sign\\
+$-$      & minus sign\\
+$\times$ & multiplication sign\\
+\end{longtable}
+
+
+\subsection{Equality}
+\label{notation:ss:equality}
+
+\begin{longtable}{ll}
+$=$       & equality\\
+$\neq$    & inequality\\
+$\approx$ & approximate equality\\
+\end{longtable}
+
+
+\subsection{Comparison}
+\label{notation:ss:comparison}
+
+\begin{longtable}{ll}
+$<$    & less-than sign\\
+$>$    & greater-than sign\\
+$\leq$ & less than or equal to\\
+$\geq$ & greater than or equal to\\
+\end{longtable}
+
+
+\section{Numbers}
+\label{notation:s:numbers}
+
+\begin{longtable}{ll}
+$a$         & A scalar\\
+$\vec{a}$   & A vector\\
+$A$         & A matrix\\
+\end{longtable}
+
+
+\section{Operations}
+\label{notation:s:operations}
+% https://tex.stackexchange.com/questions/107186/how-to-write-norm-which-adjusts-its-size
+% https://tex.stackexchange.com/questions/30619/what-is-the-best-symbol-for-vector-matrix-transpose
+
+\begin{longtable}{ll}
+$|\vec{a}|$                      & $L_1$ norm of vector $\vec{a}$\\
+$\left\lVert\vec{a}\right\rVert$ & $L_2$ norm of vector $\vec{a}$\\
+$A^\top$                         & Transpose of matrix $A$\\
+\end{longtable}
+
+
+\section{Other symbols}
+\label{notation:s:other-symbols}
+
+Add here some other symbols as needed.
+
+
+\section{Miscellaneous}
+\label{notation:s:miscellaneous}
+
+Other typography rules, conventions, or definitions.
+
+
+% The \cleardoublepage command is necessary to make sure that the
+% page numbering remains correct.
+\cleardoublepage
+% Reset the "tocdepth" and "secnumdepth" counters to the original
+% values.
+\addtocontents{toc}{\protect\setcounter{tocdepth}{\mytocdepth}}
+\setcounter{secnumdepth}{\mysecnumdepth}
+
+\endgroup

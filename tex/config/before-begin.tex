@@ -4,12 +4,18 @@
 \title{The title}
 \author{The author}
 
-% Table of contents depth. This is optional (comment to use default).
+% The counter "tocdepth" controls the "Table of contents" depth.
 %   Depth of the table of contents (TOC):
 %     1 ... chapter and sections;
 %     2 ... chapters, sections, and subsections;
 %     3 ... chapters, sections, subsections, and subsubsections.
-\setcounter{tocdepth}{2}
+\newcommand{\mytocdepth}{2}
+\setcounter{tocdepth}{\mytocdepth}
+
+% The counter "secnumdepth" controls which section levels are numbered.
+% https://latexref.xyz/Sectioning.html
+\newcommand{\mysecnumdepth}{2}
+\setcounter{secnumdepth}{\mysecnumdepth}
 
 % List of abbreviations.
 \input{tex/config/abbreviations.tex}
