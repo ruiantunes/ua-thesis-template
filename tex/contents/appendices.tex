@@ -1,5 +1,19 @@
+% Difference between annex and appendix.
+% https://ell.stackexchange.com/questions/321470/difference-between-annex-and-appendix
+
+\renewcommand*{\appendixname}{\myappendixname}
+\renewcommand*{\appendixtocname}{\myappendixtocname}
+\renewcommand*{\appendixpagename}{\myappendixpagename}
+
 \begin{appendices}
 \crefalias{chapter}{appendix}
-\input{tex/contents/a1.tex}
-\input{tex/contents/a2.tex}
+
+% To enumerate the Appendices with numbers.
+% \renewcommand{\thechapter}{\arabic{chapter}}
+% \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+% \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+
+\input{tex/contents/ap1.tex}
+\input{tex/contents/ap2.tex}
+
 \end{appendices}

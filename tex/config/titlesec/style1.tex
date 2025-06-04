@@ -3,10 +3,9 @@
 % https://tex.stackexchange.com/questions/177144/chapter-style-report-class
 % Note that you can change \rule{30pt} to another width (such as 28pt
 % or 32pt if you prefer a thinner or thicker bar).
-\newcommand*\HUGE{\Huge}
 \newcommand*\chapnamefont{\normalfont\LARGE\MakeUppercase}
-\newcommand*\chapnumfont{\normalfont\HUGE}
-\newcommand*\chaptitlefont{\normalfont\HUGE\bfseries}
+\newcommand*\chapnumfont{\normalfont\Huge}
+\newcommand*\chaptitlefont{\normalfont\Huge\bfseries}
 
 \newlength\beforechapskip
 \newlength\midchapskip
@@ -14,7 +13,8 @@
 \addtolength\midchapskip{-\textwidth}
 \addtolength\midchapskip{-\oddsidemargin}
 \addtolength\midchapskip{-1in}
-\setlength\beforechapskip{18mm}
+% Also adjust this value accordingly to your preference.
+\setlength\beforechapskip{17mm}
 
 \titleformat{\chapter}[display]
   {\normalfont\filleft}

@@ -1,3 +1,18 @@
+% Select the language (correct expressions).
+\makeatletter
+\ifportuguese@use
+\input{tex/config/language/expressions/portuguese-before-begin.tex}
+\else
+\ifukenglish@use
+\input{tex/config/language/expressions/english-before-begin.tex}
+\else
+\ifusenglish@use
+\input{tex/config/language/expressions/english-before-begin.tex}
+\fi
+\fi
+\fi
+\makeatother
+
 % Title and author. This is not mandatory to change, because this is
 % only used by the "\maketitle" command which it is not used in this
 % template.
