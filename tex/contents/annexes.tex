@@ -8,10 +8,15 @@
 \begin{appendices}
 \crefalias{chapter}{annex}
 
-% To enumerate the Annexes with numbers.
-\renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+% To enumerate the Annexes with Arabic numbers.
+% \renewcommand{\thechapter}{\arabic{chapter}}
+% \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+% \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+
+% To enumerate the Annexes with Roman numbers.
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\Roman{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\Roman{chapter}.\arabic{section}.\arabic{subsection}}
 
 \input{tex/contents/an1.tex}
 \input{tex/contents/an2.tex}

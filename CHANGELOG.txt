@@ -1,3 +1,15 @@
+2025-06-05
+==========
+
+- Annexes use Roman numbering by default.
+
+- The "Table of contents" entry is hidden from the table of contents.
+
+- Other small changes.
+
+
+
+
 2025-06-04
 ==========
 
