@@ -166,6 +166,14 @@ top=30mm,%
 \fi
 \fi
 
+% Improve line breaking mechanisms.
+% https://tex.stackexchange.com/questions/226286/how-to-deal-with-many-overfull-hboxes-in-large-document/239955#239955
+% https://tex.stackexchange.com/questions/162137/loading-microtype-before-or-after-the-font
+% https://tex.stackexchange.com/questions/241343/what-is-the-meaning-of-fussy-sloppy-emergencystretch-tolerance-hbadness
+% https://texfaq.org/FAQ-overfull
+% https://tex.stackexchange.com/questions/636667/why-doesnt-cleveref-work-in-portuguese/636675#636675
+\usepackage{microtype}
+
 % For customizing chapter styles.
 % https://texblog.org/2012/07/03/fancy-latex-chapter-styles/
 % Warning: the "titlesec" package may conflict with the "hyperref"

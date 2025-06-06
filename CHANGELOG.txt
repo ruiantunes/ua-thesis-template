@@ -1,3 +1,14 @@
+2025-06-06
+==========
+
+- The package "microtype" is used to improve typographic aspects and
+  line breaking mechanisms.
+
+- Other small changes.
+
+
+
+
 2025-06-05
 ==========
 
