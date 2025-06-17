@@ -189,6 +189,30 @@ top=30mm,%
 % \input{tex/config/titlesec/style4.tex}
 % \input{tex/config/titlesec/style5.tex}
 
+% To have access to the "\xpretocmd" command.
+\usepackage{xpatch}
+
+% Create a list of equations.
+% Adapted from:
+% https://latex.org/forum/viewtopic.php?t=428
+% https://stackoverflow.com/questions/61517319/vertical-spacing-adjustment-between-different-chapters-labels-in-the-list-of-eq
+% The option "titles" is required since we are using the "titlesec"
+% package to customize the chapter style.
+\usepackage[titles]{tocloft}
+
+\newlistof[chapter]{equations}{equations.toc}{\mylistofequationsname}
+
+\newcommand{\eqcaption}[1]{%
+\addcontentsline{equations.toc}{equations}{\protect\numberline{\theequation}#1}\par}
+
+% Default values of <indent> and <numwidth>.
+\cftsetindents{equations}{1.5em}{2.3em}
+
+% Adjust vertical spacing between equations of different chapters.
+\makeatletter
+\xpretocmd{\@chapter}{\addtocontents{equations.toc}{\protect\addvspace{10\p@}}}{}{}{}%
+\makeatother
+
 % Line spacing. The "setspace" package has to be loaded before the
 % "hyperref" package to ensure that the links of footnotes are correct.
 % https://tex.stackexchange.com/questions/203439/footnotes-misbehaving-in-report-go-to-front-page-but-behave-correctly-in-other-r
@@ -207,6 +231,9 @@ top=30mm,%
 
 % International System of Units (SI).
 \usepackage{siunitx}
+
+% Lorem Ipsum dummy text.
+% \usepackage{lipsum}
 
 % BibLaTeX bibliography. Select the preferred citation style.
 % Alternatively, you can configure your own.

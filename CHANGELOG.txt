@@ -1,8 +1,18 @@
+2025-06-17
+==========
+
+- Added list of equations using the packages "tocloft" and "xpatch".
+
+- Other small changes.
+
+
+
+
 2025-06-06
 ==========
 
-- The package "microtype" is used to improve typographic aspects and
-  line breaking mechanisms.
+- The package "microtype" was included to improve typographic aspects
+  and line breaking mechanisms.
 
 - Other small changes.
 
@@ -12,9 +22,10 @@
 2025-06-05
 ==========
 
-- Annexes use Roman numbering by default.
+- Annexes now use Roman numbering by default.
 
-- The "Table of contents" entry is hidden from the table of contents.
+- The "Table of contents" entry is now hidden from the table of
+  contents.
 
 - Other small changes.
 
@@ -59,7 +70,7 @@
 2024-10-28
 ==========
 
-- Improving file structure: "toc.tex" is now a separate file containing
+- Improved file structure: "toc.tex" is now a separate file containing
   the table of contents. This allows to comment the "first-pages.tex"
   part to reduce compilation time.
 
